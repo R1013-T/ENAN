@@ -7,7 +7,8 @@ import useMarkerAr from "../../utils/ar/useMarkerAr";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
-const scan = () => {
+const Scan = () => {
+  // 順番大事です。
   const markers = ["lock", "dent"];
 
   const [foundMarker, setFoundMarker] = useState("");
@@ -169,4 +170,4 @@ const scan = () => {
   );
 };
 
-export default scan;
+export default Scan;

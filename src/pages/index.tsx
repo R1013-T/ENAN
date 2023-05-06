@@ -5,7 +5,7 @@ import { useState } from "react";
 import Link from "next/link";
 
 
-const index = () => {
+const Index = () => {
   const [mainState, setMainState] = useState("initial");
 
   return (
@@ -17,10 +17,10 @@ const index = () => {
 
       </div>
       <div className="fixed bottom-10 right-10 ">
-        <Link href="./scan">scan</Link>
+        <Link href="./Scan">scan</Link>
       </div>
     </>
   );
 };
 
-export default index;
+export default Index;
