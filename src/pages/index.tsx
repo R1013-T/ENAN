@@ -17,7 +17,7 @@ const Index = () => {
 
       </div>
       <div className="fixed bottom-10 right-10 ">
-        <Link href="./Scan">scan</Link>
+        <Link href="./scan">scan</Link>
       </div>
     </>
   );
