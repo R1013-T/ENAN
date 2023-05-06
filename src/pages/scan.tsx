@@ -36,12 +36,7 @@ const scan = () => {
       console.log("arMarkerControls", arMarkerControls);
       arSetUp();
     }
-  }, [
-    markerRoots,
-    arToolkitSource,
-    arToolkitContext,
-    arMarkerControls,
-  ]);
+  }, [markerRoots, arToolkitSource, arToolkitContext, arMarkerControls]);
 
   const arSetUp = () => {
     const canvas = document.querySelector("canvas") as HTMLCanvasElement;
@@ -80,7 +75,7 @@ const scan = () => {
       );
     });
     arMarkerControls[1].addEventListener("markerLost", () => {
-      setFoundMarker("")
+      setFoundMarker("");
     });
 
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -101,29 +96,32 @@ const scan = () => {
 
     for (let i = 0; i < markers.length; i++) {
       scene.add(markerRoots[i]);
+
+      const lockLoader = new GLTFLoader();
+      const lockUrl = `/ar/models/${markers[i]}/scene.gltf`;
+
+      lockLoader.load(lockUrl, (gltf) => {
+        const model = gltf.scene;
+
+        switch (markers[i]) {
+          case "lock":
+            model.scale.set(10, 10, 10);
+            model.position.set(0.5, 0, 1.3);
+            model.rotation.set(-Math.PI / 2, 0, 0);
+            break;
+          case "dent":
+            model.scale.set(2, 2, 2);
+            model.position.set(0, 0, 0);
+            model.rotation.set(0, 0, 0);
+            break;
+
+          default:
+            break;
+        }
+
+        markerRoots[i].add(model);
+      });
     }
-
-    const lockLoader = new GLTFLoader();
-    const lockUrl = `/ar/models/${markers[0]}/scene.gltf`;
-
-    lockLoader.load(lockUrl, (gltf) => {
-      const model = gltf.scene;
-      model.scale.set(10, 10, 10);
-      model.position.set(0.5, 0, 1.3);
-      model.rotation.set(-Math.PI / 2, 0, 0);
-      markerRoots[0].add(model);
-    });
-
-    const dentLoader = new GLTFLoader();
-    const dentUrl = `/ar/models/${markers[1]}/scene.gltf`;
-
-    dentLoader.load(dentUrl, (gltf) => {
-      const model = gltf.scene;
-      model.scale.set(2, 2, 2);
-      model.position.set(0, 0, 0);
-      model.rotation.set(0, 0, 0);
-      markerRoots[1].add(model);
-    });
 
     renderer.setAnimationLoop((delta) => {
       if (arToolkitSource.ready) {
@@ -145,11 +143,11 @@ const scan = () => {
 
   useEffect(() => {
     if (foundMarker) {
-      console.log(`${foundMarker} found`)
+      console.log(`${foundMarker} found`);
     } else {
-      console.log(`lost`)
+      console.log(`lost`);
     }
-  },[foundMarker])
+  }, [foundMarker]);
 
   return (
     <>
