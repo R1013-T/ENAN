@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 
-export default function useMarkerAr({ THREE }) {
+export default function useMarkerAr({ THREE, markers }) {
   const [THREEx, setTHREEx] = useState(null);
-  const [markerRootCube, setMarkerRootCube] = useState(null);
-  const [markerRootSphere, setMarkerRootSphere] = useState(null);
+  const [markerRoots, setMarkerRoots] = useState(null);
   const [arToolkitSource, setArToolkitSource] = useState(null);
   const [arToolkitContext, setArToolkitContext] = useState(null);
   const [arMarkerControls, setArMarkerControls] = useState(null);
@@ -33,8 +32,8 @@ export default function useMarkerAr({ THREE }) {
       return;
     }
 
-    const markerRootCube = new THREE.Group();
-    const markerRootSphere = new THREE.Group();
+    const markerRoots = markers.map((marker) => new THREE.Group());
+
     const arToolkitContext = new THREEx.ArToolkitContext({
       cameraParametersUrl: "/ar/camera/camera.dat",
       detectionMode: "mono",
@@ -42,27 +41,22 @@ export default function useMarkerAr({ THREE }) {
     const arToolkitSource = new THREEx.ArToolkitSource({
       sourceType: "webcam",
     });
-    const arMarkerControls = [
-      new THREEx.ArMarkerControls(arToolkitContext, markerRootCube, {
-        type: "pattern",
-        patternUrl: "/ar/markers/cube.patt",
-      }),
-      new THREEx.ArMarkerControls(arToolkitContext, markerRootSphere, {
-        type: "pattern",
-        patternUrl: "/ar/markers/sphere.patt",
-      }),
-    ];
 
-    setMarkerRootCube(markerRootCube);
-    setMarkerRootSphere(markerRootSphere);
+    const arMarkerControls = markers.map((marker, index) => {
+      return new THREEx.ArMarkerControls(arToolkitContext, markerRoots[index], {
+        type: "pattern",
+        patternUrl: `/ar/markers/${marker}.patt`,
+      });
+    });
+
+    setMarkerRoots(markerRoots);
     setArToolkitContext(arToolkitContext);
     setArToolkitSource(arToolkitSource);
     setArMarkerControls(arMarkerControls);
   }, [THREEx]);
 
   return {
-    markerRootCube,
-    markerRootSphere,
+    markerRoots,
     arToolkitSource,
     arToolkitContext,
     arMarkerControls,
