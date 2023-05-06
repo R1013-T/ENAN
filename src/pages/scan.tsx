@@ -8,6 +8,7 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 const scan = () => {
+  // 順番大事です。
   const markers = ["lock", "dent"];
 
   const [foundMarker, setFoundMarker] = useState("");
