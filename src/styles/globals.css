@@ -14,4 +14,5 @@ body {
 
 video {
   max-width: none;
+  z-index: 20 !important;
 }

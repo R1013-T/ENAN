@@ -7,11 +7,13 @@ import useMarkerAr from "@/hooks/ar/useMarkerAr";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Scan = () => {
+  const router = useRouter();
+
   // 順番大事です。
   const markers = ["lock", "dent"];
-
   const [foundMarker, setFoundMarker] = useState("");
 
   const {
@@ -31,11 +33,6 @@ const Scan = () => {
       arToolkitContext &&
       arMarkerControls
     ) {
-      // console.log("markers", markers);
-      // console.log("markerRoots", markerRoots);
-      // console.log("arToolkitSource", arToolkitSource);
-      // console.log("arToolkitContext", arToolkitContext);
-      // console.log("arMarkerControls", arMarkerControls);
       arSetUp();
     }
   }, [markerRoots, arToolkitSource, arToolkitContext, arMarkerControls]);
@@ -64,7 +61,7 @@ const Scan = () => {
       );
     });
     arMarkerControls[0].addEventListener("markerLost", () => {
-      setFoundMarker("");
+      setFoundMarker("lost");
     });
 
     arMarkerControls[1].addEventListener("markerFound", () => {
@@ -77,7 +74,7 @@ const Scan = () => {
       );
     });
     arMarkerControls[1].addEventListener("markerLost", () => {
-      setFoundMarker("");
+      setFoundMarker("lost");
     });
 
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -144,24 +141,25 @@ const Scan = () => {
   };
 
   useEffect(() => {
-    if (foundMarker) {
-      console.log(`${foundMarker} found`);
-    } else {
-      console.log(`lost`);
+    switch (foundMarker) {
+      case "lost":
+        console.log(`lost`);
+        break;
+      case "":
+        break;
+      default:
+        console.log(`${foundMarker} found`);
+        break;
     }
   }, [foundMarker]);
 
-  useEffect(() => {
-    console.log("markerRoots", markerRoots);
-    console.log("arToolkitSource", arToolkitSource);
-    console.log("arToolkitContext", arToolkitContext);
-    console.log("arMarkerControls", arMarkerControls);
-    // if (!markerRoots) {
-    //   setTimeout(() => {
-    //     window.location.reload();
-    //   }, 3500);
-    // }
-  }, [])
+  const handleDashboard = () => {
+    router.push("/dashboard");
+  };
+
+  const startScan = () => {
+    document.location.reload();
+  };
 
   return (
     <>
@@ -178,7 +176,18 @@ const Scan = () => {
         >
           <canvas id="canvas"></canvas>
         </div>
-        <Link href={"/dashboard"} className="fixed bottom-10 right-10" >dashboard</Link>
+        <button
+          className="fixed left-1/2 bottom-1/2 -translate-x-1/2 -translate-y-1/2 z-10"
+          onClick={startScan}
+        >
+          Scan Start
+        </button>
+        <button
+          className="fixed bottom-10 right-10 z-30"
+          onClick={handleDashboard}
+        >
+          dashboard
+        </button>
       </main>
     </>
   );

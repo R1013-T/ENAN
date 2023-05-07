@@ -7,10 +7,12 @@ const Dashboard = () => {
   return (
     <div>
       <h1>#dashboard</h1>
-      <Link href={"/story"} className="block" >story</Link>
-      <Link href={"/scan"} >scan</Link>
+      <Link href={"/story"} className="block">
+        story
+      </Link>
+      <Link href={"/scan"}>scan</Link>
     </div>
   );
-}
+};
 
 export default Dashboard;
