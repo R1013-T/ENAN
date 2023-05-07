@@ -90,7 +90,7 @@ const Scan = () => {
     const wrapper = document.querySelector(".wrapper") as HTMLDivElement;
     arToolkitSource.init(() => {
       wrapper.appendChild(arToolkitSource.domElement);
-      setTimeout(handleResize, 400);
+      setTimeout(handleResize, 600);
     });
 
     for (let i = 0; i < markers.length; i++) {
