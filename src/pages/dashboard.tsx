@@ -6,8 +6,6 @@ const Dashboard = () => {
 
   const changeScan = () => {
     document.location.href = "/scan";
-    // router.replace("/scan");
-    // router.push("/scan");
   };
 
   return (
@@ -17,7 +15,6 @@ const Dashboard = () => {
         story
       </Link>
       <button onClick={changeScan}>scan</button>
-      {/* <Link href={"/scan"}>scan</Link> */}
     </div>
   );
 };
