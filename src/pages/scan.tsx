@@ -12,7 +12,6 @@ import { useRouter } from "next/router";
 const Scan = () => {
   const router = useRouter();
 
-  // 順番大事です。
   const markers = ["lock", "dent"];
   const [foundMarker, setFoundMarker] = useState("");
 
@@ -154,7 +153,7 @@ const Scan = () => {
   }, [foundMarker]);
 
   const handleDashboard = () => {
-    router.push("/dashboard");
+    router.reload();
   };
 
   const startScan = () => {
@@ -183,11 +182,14 @@ const Scan = () => {
           Scan Start
         </button>
         <button
-          className="fixed bottom-10 right-10 z-30"
+          className="fixed bottom-10 left-10 z-30"
           onClick={handleDashboard}
         >
-          dashboard
+          refresh
         </button>
+        <Link className="fixed bottom-10 right-10 z-30" href="/dashboard">
+          dashboard
+        </Link>
       </main>
     </>
   );

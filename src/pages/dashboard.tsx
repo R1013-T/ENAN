@@ -4,13 +4,20 @@ import { useRouter } from "next/router";
 const Dashboard = () => {
   const router = useRouter();
 
+  const changeScan = () => {
+    document.location.href = "/scan";
+    // router.replace("/scan");
+    // router.push("/scan");
+  };
+
   return (
     <div>
       <h1>#dashboard</h1>
       <Link href={"/story"} className="block">
         story
       </Link>
-      <Link href={"/scan"}>scan</Link>
+      <button onClick={changeScan}>scan</button>
+      {/* <Link href={"/scan"}>scan</Link> */}
     </div>
   );
 };
