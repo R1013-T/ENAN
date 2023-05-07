@@ -2,10 +2,11 @@ import Head from "next/head";
 import Script from "next/script";
 import { useEffect, useState } from "react";
 
-import useMarkerAr from "../../utils/ar/useMarkerAr";
+import useMarkerAr from "@/hooks/ar/useMarkerAr";
 
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import Link from "next/link";
 
 const Scan = () => {
   // 順番大事です。
@@ -30,16 +31,16 @@ const Scan = () => {
       arToolkitContext &&
       arMarkerControls
     ) {
-      console.log("markers", markers);
-      console.log("markerRoots", markerRoots);
-      console.log("arToolkitSource", arToolkitSource);
-      console.log("arToolkitContext", arToolkitContext);
-      console.log("arMarkerControls", arMarkerControls);
-      arSetUp();
+      // console.log("markers", markers);
+      // console.log("markerRoots", markerRoots);
+      // console.log("arToolkitSource", arToolkitSource);
+      // console.log("arToolkitContext", arToolkitContext);
+      // console.log("arMarkerControls", arMarkerControls);
+      arSetUp(markerRoots, arToolkitSource, arToolkitContext, arMarkerControls);
     }
   }, [markerRoots, arToolkitSource, arToolkitContext, arMarkerControls]);
 
-  const arSetUp = () => {
+  const arSetUp = (markerRoots:any, arToolkitSource:any, arToolkitContext:any, arMarkerControls:any) => {
     const canvas = document.querySelector("canvas") as HTMLCanvasElement;
 
     const renderer = new THREE.WebGLRenderer({
@@ -150,6 +151,18 @@ const Scan = () => {
     }
   }, [foundMarker]);
 
+  useEffect(() => {
+    console.log("markerRoots", markerRoots);
+    console.log("arToolkitSource", arToolkitSource);
+    console.log("arToolkitContext", arToolkitContext);
+    console.log("arMarkerControls", arMarkerControls);
+    // if (!markerRoots) {
+    //   setTimeout(() => {
+    //     window.location.reload();
+    //   }, 3500);
+    // }
+  }, [])
+
   return (
     <>
       <Head>
@@ -165,6 +178,7 @@ const Scan = () => {
         >
           <canvas id="canvas"></canvas>
         </div>
+        <Link href={"/dashboard"} className="fixed bottom-10 right-10" >dashboard</Link>
       </main>
     </>
   );

@@ -1,7 +1,10 @@
+import Link from "next/link";
+
 const Story = () => {
   return (
     <div>
-      story
+      <h1>#story</h1>
+      <Link href={"/dashboard"}>dashboard</Link>
     </div>
   );
 }
