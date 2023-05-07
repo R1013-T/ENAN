@@ -36,11 +36,11 @@ const Scan = () => {
       // console.log("arToolkitSource", arToolkitSource);
       // console.log("arToolkitContext", arToolkitContext);
       // console.log("arMarkerControls", arMarkerControls);
-      arSetUp(markerRoots, arToolkitSource, arToolkitContext, arMarkerControls);
+      arSetUp();
     }
   }, [markerRoots, arToolkitSource, arToolkitContext, arMarkerControls]);
 
-  const arSetUp = (markerRoots:any, arToolkitSource:any, arToolkitContext:any, arMarkerControls:any) => {
+  const arSetUp = () => {
     const canvas = document.querySelector("canvas") as HTMLCanvasElement;
 
     const renderer = new THREE.WebGLRenderer({
