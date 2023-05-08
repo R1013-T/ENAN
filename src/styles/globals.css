@@ -16,3 +16,8 @@ video {
   max-width: none;
   z-index: 20 !important;
 }
+
+.main {
+  margin-top: 12px;
+  height: calc(100dvh - 60px);
+}
