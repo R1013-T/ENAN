@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import Link from "next/link";
 import { Layout } from "@/components/Layout";
 import { useForm } from "react-hook-form";
@@ -46,11 +45,11 @@ const Index = () => {
             {...register("name")}
           />
           <p className="text-xs text-red-300 h-1 py-5 mb-5">
-            {errors.name?.message as ReactNode}
+            {errors.name?.message}
           </p>
           <button
             className={`w-full bg-theme-red py-2 mb-5 rounded tracking-widest text-lg transition-all ${
-              (errors.name?.message as ReactNode) ? "opacity-40" : ""
+              errors.name?.message ? "opacity-40" : ""
             } `}
             type="submit"
           >
