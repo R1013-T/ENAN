@@ -22,10 +22,7 @@ const Index = () => {
   });
 
   const onSubmit = (data: TopForm) => {
-    // if (errors.name) return;
-    // // TODO: ユーザー名を保存する
-    // // TODO: ユーザー名を保存したら、ストーリー画面に遷移する
-    // router.push("/story");
+    console.log(data);
   };
 
   return (
