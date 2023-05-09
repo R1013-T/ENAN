@@ -1,20 +1,28 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const Dashboard = () => {
   const router = useRouter();
+  const { id } = router.query;
 
   const changeScan = () => {
-    document.location.href = "/scan";
+    const params = {
+      id: id as string,
+    };
+    const urlSearchParam = new URLSearchParams(params).toString();
+    // keyword=keyword&tag=tag
+
+    document.location.href = "/scan/?" + urlSearchParam;
   };
 
   return (
     <div>
       <h1>#dashboard</h1>
-      <Link href={"/story"} className="block">
-        story
-      </Link>
+      <Link href={{ pathname: "/story", query: { id: id } }}>dashboard</Link>
+      <br />
       <button onClick={changeScan}>scan</button>
+      <br />
     </div>
   );
 };

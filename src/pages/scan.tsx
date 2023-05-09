@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 
 const Scan = () => {
   const router = useRouter();
+  const { id } = router.query;
 
   const markers = ["lock", "dent"];
   const [foundMarker, setFoundMarker] = useState("");
@@ -187,7 +188,10 @@ const Scan = () => {
         >
           refresh
         </button>
-        <Link className="fixed bottom-10 right-10 z-30" href="/dashboard">
+        <Link
+          className="fixed bottom-10 right-10 z-30"
+          href={{ pathname: "/dashboard", query: { id: id } }}
+        >
           dashboard
         </Link>
       </main>

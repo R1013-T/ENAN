@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { validationSchema } from "@/utils/validationSchema";
 import { useRouter } from "next/router";
+import { createUser } from "@/hooks/supabase/useUserFunctions";
+import { v4 as uuidv4 } from "uuid";
 interface TopForm {
   name: string;
 }
@@ -20,8 +22,25 @@ const Index = () => {
     resolver: zodResolver(validationSchema),
   });
 
-  const onSubmit = (data: TopForm) => {
-    console.log(data);
+  const onSubmit = async (data: TopForm) => {
+    if (errors.name) return;
+    console.log(data.name);
+
+    const id = uuidv4();
+
+    await createUser(id, data.name)
+      .then(() => {
+        console.log("success");
+        console.log(id);
+
+        router.push({
+          pathname: "/story",
+          query: { id: id },
+        });
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
   };
 
   return (
