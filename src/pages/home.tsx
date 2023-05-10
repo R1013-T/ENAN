@@ -17,12 +17,7 @@ const Dashboard = () => {
     document.location.href = "/scan/?" + urlSearchParam;
   };
 
-  return (
-    <Layout headerType="sub" title="ホーム">
-      <img src="/images/underButton/end_fill.png" alt="" />
-      <img src="/images/underButton/end_fill.svg" alt="" />
-    </Layout>
-  );
+  return <Layout headerType="sub" title="ホーム"></Layout>;
 };
 
 export default Dashboard;
