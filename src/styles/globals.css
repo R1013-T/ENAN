@@ -14,7 +14,11 @@ body {
 
 video {
   max-width: none;
-  z-index: 20 !important;
+  /* z-index: 100 !important; */
+}
+
+canvas {
+  z-index: 200 !important;
 }
 
 .main {

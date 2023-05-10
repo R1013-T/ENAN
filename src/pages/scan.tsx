@@ -174,23 +174,11 @@ const Scan = () => {
           <canvas id="canvas"></canvas>
         </div>
         <button
-          className="fixed left-1/2 bottom-1/2 -translate-x-1/2 -translate-y-1/2 z-10"
+          className="fixed left-1/2 bottom-1/2 -translate-x-1/2 -translate-y-1/2 -z-10"
           onClick={startScan}
         >
-          Scan Start
+          loading ...
         </button>
-        <button
-          className="fixed bottom-10 left-10 z-30"
-          onClick={handleDashboard}
-        >
-          refresh
-        </button>
-        <Link
-          className="fixed bottom-10 right-10 z-30"
-          href={{ pathname: "/dashboard", query: { id: id } }}
-        >
-          dashboard
-        </Link>
       </main>
     </Layout>
   );
