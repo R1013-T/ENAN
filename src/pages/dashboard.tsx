@@ -1,3 +1,5 @@
+import { Layout } from "@/components/Layout";
+import UnderButton from "@/components/dashboard/underButton/UnderButton";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -11,19 +13,18 @@ const Dashboard = () => {
       id: id as string,
     };
     const urlSearchParam = new URLSearchParams(params).toString();
-    // keyword=keyword&tag=tag
 
     document.location.href = "/scan/?" + urlSearchParam;
   };
 
   return (
-    <div>
-      <h1>#dashboard</h1>
-      <Link href={{ pathname: "/story", query: { id: id } }}>dashboard</Link>
-      <br />
-      <button onClick={changeScan}>scan</button>
-      <br />
-    </div>
+    <Layout headerType="sub" title="ダッシュボード - 名探偵エナン">
+      <UnderButton />
+
+      {/* <Link href={{ pathname: "/story", query: { id: id } }}>story</Link>
+      <button onClick={changeScan}>scan</button> */}
+      <div className="flex w-full h-screen border flex-wrap overflow-y-scroll"></div>
+    </Layout>
   );
 };
 

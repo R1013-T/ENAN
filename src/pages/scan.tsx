@@ -8,6 +8,8 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { Layout } from "@/components/Layout";
+import UnderButton from "@/components/dashboard/underButton/UnderButton";
 
 const Scan = () => {
   const router = useRouter();
@@ -162,14 +164,9 @@ const Scan = () => {
   };
 
   return (
-    <>
-      <Head>
-        <title>AR.js THREE.js NEXT.js TypeScript</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <Layout headerType="sub" title="スキャン - 名探偵エナン">
       <Script src="https://unpkg.com/three@0.127.0/build/three.min.js" />
-      <main className="w-screen h-screen overflow-hidden">
+      <main className="fixed top-0 left-0 w-screen h-screen overflow-hidden">
         <div
           id="wrapper"
           className="wrapper w-full h-full relative overflow-hidden"
@@ -195,7 +192,8 @@ const Scan = () => {
           dashboard
         </Link>
       </main>
-    </>
+      <UnderButton />
+    </Layout>
   );
 };
 

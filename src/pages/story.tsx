@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import UnderButton from "@/components/dashboard/underButton/UnderButton";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -12,11 +13,12 @@ const Story = () => {
   }, []);
 
   return (
-    <Layout headerType="sub" title="名探偵エナン - ストーリー">
+    <Layout headerType="sub" title="ストーリー - 名探偵エナン">
       <h1>#story</h1>
       <Link href={{ pathname: "/dashboard", query: { id: id } }}>
         dashboard
       </Link>
+      <UnderButton />
     </Layout>
   );
 };

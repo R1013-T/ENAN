@@ -29,11 +29,11 @@ export const Layout: FC<Title> = ({
         </>
       ) : (
         <>
-          <header className="h-12">
+          <header className="h-12 absolute top-0 left-0 z-40">
             <Header headerType={headerType} />
           </header>
-          <main className="main grid place-items-center">
-            <div className="h-full w-full max-w-md">{children}</div>
+          <main className="main">
+            <div className="h-full w-full max-w-md relative">{children}</div>
           </main>
         </>
       )}

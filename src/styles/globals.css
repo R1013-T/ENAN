@@ -18,6 +18,31 @@ video {
 }
 
 .main {
-  margin-top: 12px;
-  height: calc(100dvh - 60px);
+  position: absolute;
+  height: 100dvh;
+  width: 100%;
+  bottom: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid;
+  overflow: hidden;
+}
+
+.scanIconActive {
+  animation: scanIconActive 3s infinite;
+}
+
+@keyframes scanIconActive {
+  0% {
+    opacity: 0.6;
+    transform: scale(0.8) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.6;
+    transform: scale(0.8);
+  }
 }

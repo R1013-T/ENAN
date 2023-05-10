@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_レイヤー_6" data-name="レイヤー 6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 437.75 416.06">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: silver;
+      }
+    </style>
+  </defs>
+  <path class="cls-1" d="m85.74,381.71h83.23v-138.72h122.07v138.72h83.23v-216.4L230,57.11l-144.26,108.2v216.4Zm-33.29,33.29V148.67L230,15.5l177.56,133.17v266.33h-149.81v-138.72h-55.49v138.72H52.44Z"/>
+</svg>
