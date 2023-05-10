@@ -1,6 +1,7 @@
 import { FC, ReactNode } from "react";
 import Head from "next/head";
 import Header from "./Header";
+import UnderButton from "./dashboard/underButton/UnderButton";
 
 type Title = {
   headerType: "top" | "sub";
@@ -30,6 +31,7 @@ export const Layout: FC<Title> = ({ headerType, children, title = "" }) => {
           </header>
           <main className="main">
             <div className="h-full w-full max-w-md relative">{children}</div>
+            <UnderButton />
           </main>
         </>
       )}

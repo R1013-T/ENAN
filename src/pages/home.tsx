@@ -19,10 +19,6 @@ const Dashboard = () => {
 
   return (
     <Layout headerType="sub" title="ホーム">
-      <UnderButton />
-
-      {/* <Link href={{ pathname: "/story", query: { id: id } }}>story</Link>
-      <button onClick={changeScan}>scan</button> */}
       <div className="flex w-full h-screen flex-wrap overflow-y-scroll"></div>
     </Layout>
   );

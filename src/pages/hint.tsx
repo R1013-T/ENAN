@@ -4,7 +4,7 @@ import UnderButton from "@/components/dashboard/underButton/UnderButton";
 const Hints = () => {
   return (
     <Layout headerType="sub" title="ヒント">
-      <UnderButton />
+      <p>hint</p>
     </Layout>
   );
 };

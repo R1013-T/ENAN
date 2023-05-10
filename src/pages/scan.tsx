@@ -192,7 +192,6 @@ const Scan = () => {
           dashboard
         </Link>
       </main>
-      <UnderButton />
     </Layout>
   );
 };
