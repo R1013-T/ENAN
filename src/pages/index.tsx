@@ -44,7 +44,7 @@ const Index = () => {
   };
 
   return (
-    <Layout headerType="top" title="名探偵エナン">
+    <Layout headerType="top" title="">
       <div className="h-full relative">
         <form
           className="absolute bottom-5 w-full px-5"

@@ -164,7 +164,7 @@ const Scan = () => {
   };
 
   return (
-    <Layout headerType="sub" title="スキャン - 名探偵エナン">
+    <Layout headerType="sub" title="AR">
       <Script src="https://unpkg.com/three@0.127.0/build/three.min.js" />
       <main className="fixed top-0 left-0 w-screen h-screen overflow-hidden">
         <div

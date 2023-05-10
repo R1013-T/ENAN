@@ -8,15 +8,11 @@ type Title = {
   children: ReactNode;
 };
 
-export const Layout: FC<Title> = ({
-  headerType,
-  children,
-  title = "名探偵エナン",
-}) => {
+export const Layout: FC<Title> = ({ headerType, children, title = "" }) => {
   return (
     <div className="h-screen bg-black overflow-hidden">
       <Head>
-        <title>{title}</title>
+        <title>{`${title ? title + " - " : ""} 名探偵エナン`}</title>
       </Head>
       {headerType === "top" ? (
         <>

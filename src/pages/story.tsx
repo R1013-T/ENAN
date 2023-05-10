@@ -13,7 +13,7 @@ const Story = () => {
   }, []);
 
   return (
-    <Layout headerType="sub" title="ストーリー - 名探偵エナン">
+    <Layout headerType="sub" title="ストーリー">
       <h1>#story</h1>
       <Link href={{ pathname: "/dashboard", query: { id: id } }}>
         dashboard
