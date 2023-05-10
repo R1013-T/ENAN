@@ -17,7 +17,11 @@ const Dashboard = () => {
     document.location.href = "/scan/?" + urlSearchParam;
   };
 
-  return <Layout headerType="sub" title="ホーム"></Layout>;
+  return (
+    <Layout headerType="sub" title="ホーム">
+      <p>home</p>
+    </Layout>
+  );
 };
 
 export default Dashboard;
