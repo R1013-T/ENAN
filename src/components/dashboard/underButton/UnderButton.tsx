@@ -18,10 +18,10 @@ const UnderButton = () => {
     <div className="fixed z-50 bottom-7 right-1/2 translate-x-1/2 w-11/12 rounded-2xl p-2 flex items-center justify-around bg-theme-black/50 backdrop-blur">
       <Item name="home" />
       <Item name="story" />
-      <div className="bg-theme-red rounded-full p-2 -mx-3" onClick={scanPage}>
+      <div className="bg-theme-red rounded-full p-1.5 -mx-3" onClick={scanPage}>
         <img
           src="/images/underButton/scan.svg"
-          className={`w-8 h-8 opacity-60 ${
+          className={`w-9 opacity-90 ${
             router.pathname === "/scan" ? "scanIconActive" : ""
           }`}
         />
