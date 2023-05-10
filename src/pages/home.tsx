@@ -19,7 +19,8 @@ const Dashboard = () => {
 
   return (
     <Layout headerType="sub" title="ホーム">
-      <div className="flex w-full h-screen flex-wrap overflow-y-scroll"></div>
+      <img src="/images/underButton/end_fill.png" alt="" />
+      <img src="/images/underButton/end_fill.svg" alt="" />
     </Layout>
   );
 };
