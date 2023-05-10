@@ -20,7 +20,9 @@ const UnderButton = () => {
       <Item name="story" />
       <div className="bg-theme-red rounded-full p-1.5 -mx-3" onClick={scanPage}>
         <img
-          src="/images/underButton/scan.svg"
+          src={`/images/underButton/scan${
+            router.pathname === "/scan" ? "_active" : ""
+          }.svg`}
           className={`w-9 opacity-90 ${
             router.pathname === "/scan" ? "scanIconActive" : ""
           }`}
