@@ -13,12 +13,12 @@ const Item = (props: Props) => {
   };
 
   return (
-    <div onClick={handleChangePage}>
+    <div className="w-7 h-7 grid place-items-center" onClick={handleChangePage}>
       <img
         src={`images/underButton/${props.name}${
           router.pathname === "/" + props.name ? "_fill" : ""
         }.svg`}
-        className="w-6"
+        className={`${router.pathname === "/" + props.name ? "w-7" : "w-6"}`}
       />
     </div>
   );
