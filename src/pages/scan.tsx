@@ -6,10 +6,8 @@ import useMarkerAr from "@/hooks/ar/useMarkerAr";
 
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { Layout } from "@/components/Layout";
-import UnderButton from "@/components/dashboard/underButton/UnderButton";
 
 const Scan = () => {
   const router = useRouter();
@@ -155,13 +153,13 @@ const Scan = () => {
     }
   }, [foundMarker]);
 
-  const handleDashboard = () => {
-    router.reload();
-  };
+  // const handleDashboard = () => {
+  //   router.reload();
+  // };
 
-  const startScan = () => {
-    document.location.reload();
-  };
+  // const startScan = () => {
+  //   document.location.reload();
+  // };
 
   return (
     <Layout headerType="sub" title="AR">
@@ -173,12 +171,6 @@ const Scan = () => {
         >
           <canvas id="canvas"></canvas>
         </div>
-        <button
-          className="fixed left-1/2 bottom-1/2 -translate-x-1/2 -translate-y-1/2 -z-10"
-          onClick={startScan}
-        >
-          loading ...
-        </button>
       </main>
     </Layout>
   );

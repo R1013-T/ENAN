@@ -35,6 +35,10 @@ canvas {
   animation: scanIconActive 3s infinite;
 }
 
+.rotationInfinite {
+  animation: rotationInfinite linear 0.8s infinite;
+}
+
 @keyframes scanIconActive {
   0% {
     opacity: 0.6;
@@ -47,5 +51,14 @@ canvas {
   100% {
     opacity: 0.6;
     transform: scale(0.8);
+  }
+}
+
+@keyframes rotationInfinite {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

@@ -6,12 +6,16 @@ import { validationSchema } from "@/utils/validationSchema";
 import { useRouter } from "next/router";
 import { createUser } from "@/hooks/supabase/useUserFunctions";
 import { v4 as uuidv4 } from "uuid";
+import { useState } from "react";
+import { BiLoader } from "react-icons/bi";
 interface TopForm {
   name: string;
 }
 
 const Index = () => {
   const router = useRouter();
+
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const {
     register,
@@ -23,19 +27,19 @@ const Index = () => {
   });
 
   const onSubmit = async (data: TopForm) => {
-    if (errors.name) return;
-    console.log(data.name);
+    if (errors.name || isLoading) return;
+
+    setIsLoading(true);
 
     const id = uuidv4();
 
     await createUser(id, data.name)
       .then(() => {
-        console.log("success");
-        console.log(id);
+        setIsLoading(false);
 
         router.push({
           pathname: "/story",
-          query: { id: id },
+          query: { id: id, story: "1,4" },
         });
       })
       .catch((err) => {
@@ -67,12 +71,18 @@ const Index = () => {
             {errors.name?.message}
           </p>
           <button
-            className={`w-full bg-theme-red py-2 mb-5 rounded tracking-widest text-lg transition-all ${
+            className={`w-full bg-theme-red py-2 mb-5 rounded tracking-widest text-lg transition-all flex justify-center items-center ${
               errors.name?.message ? "opacity-40" : ""
-            } `}
+            } ${isLoading ? "opacity-40" : ""}`}
             type="submit"
           >
-            START
+            <div className="w-6 h-6 grid place-items-center">
+              <div className="rotationInfinite">
+                {isLoading ? <BiLoader size={20} /> : ""}
+              </div>
+            </div>
+            <p className="px-3">START</p>
+            <div className="w-6"></div>
           </button>
         </form>
       </div>
