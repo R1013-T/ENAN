@@ -1,7 +1,7 @@
 import { Layout } from "@/components/Layout";
 import List from "@/components/story/List";
 import Play from "@/components/story/play/Play";
-import { useId } from "@/hooks/comma_separated_ids_to_array";
+import { useId } from "@/hooks/useCommaSeparatedIdsToArray";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -20,11 +20,11 @@ const Story = () => {
     if (!router.isReady) return;
 
     // クエリパラメータから取得したstorIdによって表示コンテンツを変える
-    getStoryIds()
+    useStoryIds()
 
   }, [router.isReady]);
 
-  const getStoryIds = () => {
+  const useStoryIds = () => {
     // クエリパラメータから取得したstorId
     if (storyId) {
       // ある場合は,区切りのstoryIdを配列に格納する。
