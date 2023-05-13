@@ -1,4 +1,4 @@
-export const useId = (comma_id: string) => {
+export const exchangeId = (comma_id: string) => {
   const start_end_id = comma_id.split(",");
   const ids:number[] = [];
 
