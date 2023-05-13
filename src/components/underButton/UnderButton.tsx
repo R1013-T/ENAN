@@ -15,7 +15,7 @@ const UnderButton = () => {
   };
 
   return (
-    <div className="fixed z-50 bottom-7 right-1/2 translate-x-1/2 w-11/12 h-16 rounded-2xl p-2 flex items-center justify-around bg-theme-black/50 backdrop-blur">
+    <div className="fixed z-50 bottom-6 right-1/2 translate-x-1/2 w-11/12 h-16 rounded-2xl p-2 flex items-center justify-around bg-theme-black/20 backdrop-blur-md">
       <Item name="home" />
       <Item name="story" />
       <div className="bg-theme-red rounded-full p-1.5 -mx-3" onClick={scanPage}>

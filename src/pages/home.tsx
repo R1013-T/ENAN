@@ -1,5 +1,5 @@
 import { Layout } from "@/components/Layout";
-import UnderButton from "@/components/dashboard/underButton/UnderButton";
+import UnderButton from "@/components/underButton/UnderButton";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -19,7 +19,7 @@ const Dashboard = () => {
 
   return (
     <Layout headerType="sub" title="ホーム">
-      <p>home</p>
+      <p></p>
     </Layout>
   );
 };

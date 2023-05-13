@@ -8,7 +8,7 @@ interface Props {
 const Header = (props: Props) => {
   return (
     <div className="h-full relative">
-      <div className="fixed top-5 right-5">
+      <div className="fixed top-6 right-6">
         <VscMenu size={25} className="text-gray-300" />
       </div>
       {props.headerType === "top" ? (
@@ -21,7 +21,7 @@ const Header = (props: Props) => {
           />
         </div>
       ) : (
-        <div className="py-6 px-3">
+        <div className=" py-6 px-3">
           <Image
             src="/images/enan_logo_mini.png"
             alt="enan"

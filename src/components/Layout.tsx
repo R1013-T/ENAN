@@ -1,15 +1,19 @@
 import { FC, ReactNode } from "react";
 import Head from "next/head";
 import Header from "./Header";
-import UnderButton from "./dashboard/underButton/UnderButton";
+import UnderButton from "./underButton/UnderButton";
 
 type Title = {
   headerType: "top" | "sub";
   title: string;
   children: ReactNode;
+  hideUnderButton?: boolean;
 };
 
-export const Layout: FC<Title> = ({ headerType, children, title = "" }) => {
+export const Layout: FC<Title> = (
+  { headerType, children, title = "" },
+  hideUnderButton?
+) => {
   return (
     <div className="h-screen bg-black overflow-hidden">
       <Head>
@@ -26,12 +30,12 @@ export const Layout: FC<Title> = ({ headerType, children, title = "" }) => {
         </>
       ) : (
         <>
-          <header className="h-12 absolute top-0 left-0 z-40">
+          <header className="absolute top-0 left-0 z-40">
             <Header headerType={headerType} />
           </header>
           <main className="main">
-            <div className="h-full w-full max-w-md relative">{children}</div>
-            <UnderButton />
+              <div className="h-full w-full max-w-md relative">{children}</div>
+              {hideUnderButton ? null : <UnderButton />}
           </main>
         </>
       )}

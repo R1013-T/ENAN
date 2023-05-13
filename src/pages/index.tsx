@@ -51,7 +51,7 @@ const Index = () => {
     <Layout headerType="top" title="">
       <div className="h-full relative">
         <form
-          className="absolute bottom-5 w-full px-5"
+          className="absolute bottom-0 w-full p-6"
           onSubmit={handleSubmit(onSubmit)}
         >
           <label
@@ -71,7 +71,7 @@ const Index = () => {
             {errors.name?.message}
           </p>
           <button
-            className={`w-full bg-theme-red py-2 mb-5 rounded tracking-widest text-lg transition-all flex justify-center items-center ${
+            className={`w-full bg-theme-red py-2 rounded tracking-widest text-lg transition-all flex justify-center items-center ${
               errors.name?.message ? "opacity-40" : ""
             } ${isLoading ? "opacity-40" : ""}`}
             type="submit"

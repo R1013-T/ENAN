@@ -31,6 +31,18 @@ canvas {
   overflow: hidden;
 }
 
+.finishTalk::after {
+  content: "";
+  background: url(/images/story_next.png) no-repeat;
+  background-size: contain;
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  margin-left:5px;
+  transform: translateY(1px);
+  animation: flashing 1s infinite;
+}
+
 .scanIconActive {
   animation: scanIconActive 3s infinite;
 }
@@ -60,5 +72,17 @@ canvas {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes flashing {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
   }
 }

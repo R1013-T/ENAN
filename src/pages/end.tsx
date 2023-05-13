@@ -1,5 +1,5 @@
 import { Layout } from "@/components/Layout";
-import UnderButton from "@/components/dashboard/underButton/UnderButton";
+import UnderButton from "@/components/underButton/UnderButton";
 
 const End = () => {
   return (
