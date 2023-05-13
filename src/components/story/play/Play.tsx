@@ -9,7 +9,7 @@ const Play = (props: Props) => {
   return (
     <div className="relative h-full w-full">
       <Back />
-      <Talk talkText="あいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえお" />
+      <Talk person="警察" talkText="あいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえおあいうえお" />
       <p>{props.storyId}</p>
     </div>
   );

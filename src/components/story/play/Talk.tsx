@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 interface Props {
+  person: string;
   talkText: string;
 }
 
@@ -35,10 +36,11 @@ const Talk = (props: Props) => {
   }
 
   return (
-    <div onClick={handleNext} className="absolute bottom-5 left-5 right-5 h-32 rounded bg-black/70 border">
-      <div className="p-3 tracking-wide text-sm">
+    <div onClick={handleNext} className="absolute bottom-5 left-5 right-5 h-36 rounded bg-black/70 border">
+      <div className="p-3 tracking-wide">
         <div>
-          <p className={` ${finishShowText ? "finishTalk" : ""}`}>{text}</p>
+          <p className="text-xs mb-1" >{props.person}</p>
+          <p className={`text-sm ${finishShowText ? "finishTalk" : ""}`}>{text}</p>
         </div>
       </div>
     </div>
