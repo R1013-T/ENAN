@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
 
 interface Props {
-  person: string;
+  person_id: number;
   talkText: string;
 }
 
 const Talk = (props: Props) => {
   const [text, setText] = useState("");
   const [finishShowText, setFinishShowText] = useState(false);
+  const [personName, setPersonName] = useState("");
+
+  useEffect(() => {
+    // !
+    setPersonName("警察");
+  },[])
 
   useEffect(() => {
     showText();
@@ -39,7 +45,7 @@ const Talk = (props: Props) => {
     <div onClick={handleNext} className="absolute bottom-5 left-5 right-5 h-36 rounded bg-black/70 border">
       <div className="p-3 tracking-wide">
         <div>
-          <p className="text-xs mb-1" >{props.person}</p>
+          <p className="text-xs mb-1" >{personName}</p>
           <p className={`text-sm ${finishShowText ? "finishTalk" : ""}`}>{text}</p>
         </div>
       </div>

@@ -1,30 +1,62 @@
 import { Layout } from "@/components/Layout";
 import List from "@/components/story/List";
 import Play from "@/components/story/play/Play";
+import { useId } from "@/hooks/comma_separated_ids_to_array";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 const Story = () => {
+  // クエリパラメータからストリーのIdを取得
   const router = useRouter();
   const storyId = router.query.story;
 
   const [hideUnderButton, setHideUnderButton] = useState(false);
+  const [currentStoryId, setCurrentStoryId] = useState<number>();
 
+  let ids: number[] = [];
+
+  // next/router の準備ができ次第
   useEffect(() => {
     if (!router.isReady) return;
 
-    if (storyId) {
-      setHideUnderButton(true)
-    } else {
-      setHideUnderButton(false)
-    }
+    // クエリパラメータから取得したstorIdによって表示コンテンツを変える
+    getStoryIds()
 
-    console.log(storyId);
   }, [router.isReady]);
 
+  const getStoryIds = () => {
+    // クエリパラメータから取得したstorId
+    if (storyId) {
+      // ある場合は,区切りのstoryIdを配列に格納する。
+      console.log("play")
+      ids = useId(storyId as string);
+
+      // !!!! ストーリーをSupabaseかか取得する処理
+
+      setCurrentStoryId(ids[0])
+    } else {
+      // ない場合はストーリーのリストを表示する。
+      console.log("list")
+      setCurrentStoryId(0);
+    }
+  }
+
+  // currentStoryIdに応じてunderButton表示/非表示
+  useEffect(() => {
+    if (currentStoryId) {
+      setHideUnderButton(true);
+    } else {
+      setHideUnderButton(false);
+    }
+  }, [currentStoryId]);
+
   return (
-    <Layout headerType="sub" title="ストーリー" hideUnderButton={hideUnderButton}>
-      {storyId ? <Play storyId={storyId} /> : <List />}
+    <Layout
+      headerType="sub"
+      title="ストーリー"
+      hideUnderButton={hideUnderButton}
+    >
+      {currentStoryId ? <Play talkText="" person_id={4} /> : <List />}
     </Layout>
   );
 };
