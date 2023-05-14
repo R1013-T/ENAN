@@ -18,7 +18,7 @@ const Item = (props: Props) => {
         src={`images/underButton/${props.name}${
           router.pathname === "/" + props.name ? "_fill" : ""
         }.svg`}
-        className={`${router.pathname === "/" + props.name ? "w-7" : "w-6"}`}
+        className={`${router.pathname === "/" + props.name ? "w-6" : "w-6"}`}
       />
     </div>
   );

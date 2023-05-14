@@ -56,7 +56,7 @@ const Story = () => {
       title="ストーリー"
       hideUnderButton={hideUnderButton}
     >
-      {currentStoryId ? <Play talkText="" person_id={4} /> : <List />}
+      {currentStoryId ? <Play talkText="" person_id={5} /> : <List />}
     </Layout>
   );
 };
