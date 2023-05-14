@@ -19,10 +19,10 @@ const List = (props: Props) => {
 
   useEffect(() => {
     if (!router.isReady) return;
-    useUserInfo();
+    getUserInfo();
   }, [router.isReady]);
 
-  const useUserInfo = async () => {
+  const getUserInfo = async () => {
     if (!router.isReady) return;
 
     // user情報を取得
@@ -32,7 +32,7 @@ const List = (props: Props) => {
     });
   };
 
-  const useStory = async (storyIds: number[]) => {
+  const getStory = async (storyIds: number[]) => {
     // storyを取得
     await getStories(storyIds).then((res) => {
       if (!res) return;
@@ -45,7 +45,7 @@ const List = (props: Props) => {
     // get_storiesを配列に変換
     const ids = user.get_stories.split(",").map((id) => Number(id));
 
-    useStory(ids);
+    getStory(ids);
   }, [user]);
 
   useEffect(() => {
