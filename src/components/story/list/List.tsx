@@ -17,7 +17,7 @@ const List = (props: Props) => {
 
   return (
     <div>
-      <p>list</p>
+      <p className="mt-10" >list</p>
       <button onClick={tmp78}>7,8</button>
     </div>
   );
