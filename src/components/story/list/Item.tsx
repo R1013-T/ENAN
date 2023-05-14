@@ -1,6 +1,6 @@
 import { Story } from "@/types/tableType";
 import { useRouter } from "next/router";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface Props {
   story: Story;
@@ -17,9 +17,10 @@ const Item = (props: Props) => {
   const router = useRouter();
   const storyItemRef = useRef<any>(null);
 
-  const handleClickStory = () => {
+  const [person_id, setPersonId] = useState<number>(0);
 
-    let storyId = storyItemRef.current.id
+  const handleClickStory = () => {
+    let storyId = storyItemRef.current.id;
 
     router.push({
       pathname: "/story",
@@ -28,17 +29,51 @@ const Item = (props: Props) => {
     props.startStory(storyItemRef.current.id);
   };
 
+  useEffect(() => {
+    let id: number;
+
+    switch (props.story.person) {
+      case "よう子":
+        id = 1;
+        break;
+      case "佐々木":
+        id = 2;
+        break;
+      case "ゆう美":
+        id = 3;
+        break;
+      case "警察":
+        id = 4;
+        break;
+      case "エナン":
+        id = 5;
+        break;
+      default:
+        id = 0;
+    }
+
+    setPersonId(id);
+  }, []);
+
   return (
-    <>
-      <div
-        className="boxShadow h-12 my-3 rounded-md cursor-pointer"
-        id={props.storyIds.id}
-        ref={storyItemRef}
-        onClick={handleClickStory}
-      >
-        {props.story.title}
+    <div
+      className="boxShadow h-14 my-3 rounded-md cursor-pointer flex overflow-hidden"
+      id={props.storyIds.id}
+      ref={storyItemRef}
+      onClick={handleClickStory}
+    >
+      <div className="mx-2">
+        <img
+          src={`/images/characters/${person_id}.png`}
+          alt=""
+          className="h-14 w-14 scale-150 translate-y-3"
+        />
       </div>
-    </>
+      <div className="flex flex-col justify-center">
+        <p className="text-xs text-theme-black">{props.story.person}</p>
+        <p className=" text-base">{props.story.title}</p>
+      </div>
+    </div>
   );
 };
 
