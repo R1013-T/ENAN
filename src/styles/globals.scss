@@ -48,6 +48,22 @@ canvas {
   word-break: keep-all;
 }
 
+.boxShadow {
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.5),
+    -4px -4px 16px rgba(255, 255, 255, 0.05);
+}
+
+.downShadow {
+  border: 2px solid #272727;
+  box-shadow: -5px -5px 5px rgba(92, 92, 92, 0.1),
+  10px 10px 10px rgba(0, 0, 0, 0.4), inset -5px -5px 5px rgba(82, 82, 82, 0.2),
+  inset 10px 10px 10px rgba(0, 0, 0, 0.4);
+  
+  &:first-child {
+    
+  }
+}
+
 .flashing {
   animation: flashing 1s infinite;
 }

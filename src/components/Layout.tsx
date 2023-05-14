@@ -14,7 +14,7 @@ type Title = {
 
 export const Layout: FC<Title> = (props) => {
   return (
-    <div className="h-screen bg-black overflow-hidden">
+    <div className="h-screen bg-bg-black overflow-hidden">
       <Head>
         <title>{`${
           props.title ? props.title + " - " : ""

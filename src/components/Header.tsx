@@ -21,7 +21,7 @@ const Header = (props: Props) => {
           />
         </div>
       ) : (
-        <div className=" py-6 px-3">
+        <div className=" p-6">
           <Image
             src="/images/enan_logo_mini.png"
             alt="enan"
