@@ -1,17 +1,24 @@
 import { Layout } from "@/components/Layout";
-import List from "@/components/story/List";
+import List from "@/components/story/list/List";
 import Play from "@/components/story/play/Play";
+import { getStories } from "@/hooks/supabase/useStoryFunctions";
 import { exchangeId } from "@/hooks/useCommaSeparatedIdsToArray";
+import { Story } from "@/types/tableType";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 const Story = () => {
   // クエリパラメータからストリーのIdを取得
   const router = useRouter();
-  const storyId = router.query.story;
+  let storyId = "";
 
+  const [isLoading, setIsLoading] = useState(true);
   const [hideUnderButton, setHideUnderButton] = useState(false);
-  const [currentStoryId, setCurrentStoryId] = useState<number>();
+
+  const [stories, setStories] = useState<Story[]>([]);
+  const [currentStory, setCurrentStory] = useState<Story>();
+  const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
+  const [showTalk, setShowTalk] = useState(false);
 
   let ids: number[] = [];
 
@@ -19,44 +26,100 @@ const Story = () => {
   useEffect(() => {
     if (!router.isReady) return;
 
-    // クエリパラメータから取得したstorIdによって表示コンテンツを変える
-    getStoryIds()
+    // クエリパラメータから取得したstorIdをセットする。
+    storyId = router.query.story as string;
 
+    // クエリパラメータから取得したstorIdによって表示コンテンツを変える
+    getStoryIds();
   }, [router.isReady]);
 
-  const getStoryIds = () => {
+  const startStory = (ids?: string) => {
+    if (ids) {
+      storyId = ids;
+    } else {
+    }
+
+    // クエリパラメータから取得したstorIdによって表示コンテンツを変える
+    getStoryIds();
+  };
+
+  const getStoryIds = async () => {
+    let stories: Story[] = [];
+
     // クエリパラメータから取得したstorId
     if (storyId) {
+      // ある場合は、underButtonを表示する。
+      setHideUnderButton(true);
       // ある場合は,区切りのstoryIdを配列に格納する。
-      console.log("play")
       ids = exchangeId(storyId as string);
 
-      // !!!! ストーリーをSupabaseかか取得する処理
+      // storyを取得する。
+      await getStories(ids).then((res) => {
+        if (!res) return;
+        stories = res;
+      });
 
-      setCurrentStoryId(ids[0])
+      setCurrentStoryIndex(0);
+
+      // storyをセットする。
+      setStories(stories);
+      setCurrentStory(stories[0]);
+
+      setIsLoading(false);
     } else {
       // ない場合はストーリーのリストを表示する。
-      console.log("list")
-      setCurrentStoryId(0);
-    }
-  }
-
-  // currentStoryIdに応じてunderButton表示/非表示
-  useEffect(() => {
-    if (currentStoryId) {
-      setHideUnderButton(true);
-    } else {
       setHideUnderButton(false);
+      setIsLoading(false);
     }
-  }, [currentStoryId]);
+  };
+
+  const nextStory = () => {
+    // 次のストーリーをセットする。
+    let storyIndex = currentStoryIndex + 1;
+
+    if (storyIndex >= stories.length) {
+      setHideUnderButton(false);
+      setCurrentStory(undefined);
+      setCurrentStoryIndex(0);
+      router.push({
+        pathname: "/story",
+        query: { id: router.query.id },
+      });
+    }
+
+    setCurrentStoryIndex(storyIndex);
+    setCurrentStory(stories[storyIndex]);
+  };
+
+  useEffect(() => {
+    // currentStoryが変更されたら、showTalkをfalseにしてからtrueにする。
+    if (currentStory) {
+      setShowTalk(false);
+
+      setTimeout(() => {
+        setShowTalk(true);
+      }, 200);
+    }
+  }, [stories, currentStory]);
 
   return (
     <Layout
       headerType="sub"
       title="ストーリー"
       hideUnderButton={hideUnderButton}
+      isLoading={isLoading}
     >
-      {currentStoryId ? <Play talkText="" person_id={5} /> : <List />}
+      {currentStory ? (
+        <Play
+          talkText={currentStory.content}
+          person_id={currentStory.person_id}
+          personName={currentStory.person}
+          showTalk={showTalk}
+          nextStory={nextStory}
+        />
+      ) : (
+        <List startStory={startStory} />
+      )}
     </Layout>
   );
 };

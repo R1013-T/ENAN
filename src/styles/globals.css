@@ -56,8 +56,13 @@ canvas {
   animation: down 1s infinite;
 }
 
-.show {
-  animation: show 0.6s 0.3s forwards;
+.fadeIn {
+  opacity: 0;
+  animation: fadeIn 0.3s 0.2s forwards;
+}
+.fadeOut {
+  opacity: 1;
+  animation: fadeOut 0.3s forwards;
 }
 
 .scanIconActive {
@@ -108,14 +113,14 @@ canvas {
     transform: translateX(0);
   }
   50% {
-    transform: translateY(1px);
+    transform: translateY(2px);
   }
   100% {
     transform: translateX(0);
   }
 }
 
-@keyframes show {
+@keyframes fadeIn {
   0% {
     transform: translateY(3px);
     opacity: 0;
@@ -123,5 +128,15 @@ canvas {
   100% {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(3px);
+    opacity: 0;
   }
 }

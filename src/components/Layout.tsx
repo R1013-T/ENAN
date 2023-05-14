@@ -2,23 +2,23 @@ import { FC, ReactNode, useEffect } from "react";
 import Head from "next/head";
 import Header from "./Header";
 import UnderButton from "./underButton/UnderButton";
+import { BiLoader } from "react-icons/bi";
 
 type Title = {
   headerType: "top" | "sub";
   title: string;
   children: ReactNode;
   hideUnderButton?: boolean;
+  isLoading?: boolean;
 };
 
 export const Layout: FC<Title> = (props) => {
-  useEffect(() => {
-    console.log("hideUnderBUtton :", props.hideUnderButton);
-  }, [props.hideUnderButton]);
-
   return (
     <div className="h-screen bg-black overflow-hidden">
       <Head>
-        <title>{`${props.title ? props.title + " - " : ""} 名探偵エナン`}</title>
+        <title>{`${
+          props.title ? props.title + " - " : ""
+        } 名探偵エナン`}</title>
       </Head>
       {props.headerType === "top" ? (
         <>
@@ -35,8 +35,17 @@ export const Layout: FC<Title> = (props) => {
             <Header headerType={props.headerType} />
           </header>
           <main className="main">
-            <div className="h-full w-full max-w-md relative">{props.children}</div>
+            <div className="h-full w-full max-w-md relative">
+              {props.children}
+            </div>
             {props.hideUnderButton ? null : <UnderButton />}
+            {props.isLoading ? (
+              <div className="fixed z-30 top-0 right-0 left-0 bottom-0 grid place-items-center bg-black/20">
+                <BiLoader className="rotationInfinite " size={20} />
+              </div>
+            ) : (
+              ""
+            )}
           </main>
         </>
       )}
