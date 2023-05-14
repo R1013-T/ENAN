@@ -64,7 +64,7 @@ const Item = (props: Props) => {
       onClick={handleClickStory}
     >
       <div className="flex">
-        <div className="mx-2">
+        <div className="ml-3 mr-2">
           <img
             src={`/images/characters/${person_id}.png`}
             alt=""
