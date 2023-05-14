@@ -19,10 +19,10 @@ const List = (props: Props) => {
 
   useEffect(() => {
     if (!router.isReady) return;
-    useUser();
+    useUserInfo();
   }, [router.isReady]);
 
-  const useUser = async () => {
+  const useUserInfo = async () => {
     if (!router.isReady) return;
 
     // user情報を取得
