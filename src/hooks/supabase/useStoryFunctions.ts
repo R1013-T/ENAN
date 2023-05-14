@@ -4,21 +4,21 @@ import { Story } from "@/types/tableType";
 export const getStories = async (ids: number[]) => {
   const stories: Story[] = [];
 
-  for (
-    let current_id = ids[0];
-    current_id <= ids[ids.length - 1];
-    current_id++
-  ) {
-    if (!current_id) return;
+  // https://zenn.dev/sora_kumo/articles/612ca66c68ff52
 
-    const { data, error } = await supabase
-      .from("stories")
-      .select("*")
-      .eq("id", current_id);
+  let p = Promise.resolve();
+  ids.forEach(async (id) => {
+    p = p.then(async () => {
+      const { data, error } = await supabase
+        .from("stories")
+        .select("*")
+        .eq("id", id);
 
-    if (!data || error) return;
-    stories.push(data[0] as Story);
-  }
+      if (!data || error) return;
+      stories.push(data[0] as Story);
+    });
+  });
+  await p;
 
   return stories;
 };

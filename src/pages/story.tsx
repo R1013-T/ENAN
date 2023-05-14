@@ -50,8 +50,14 @@ const Story = () => {
     if (storyId) {
       // ある場合は、underButtonを表示する。
       setHideUnderButton(true);
-      // ある場合は,区切りのstoryIdを配列に格納する。
-      ids = exchangeId(storyId as string);
+
+      // ストーリidが複数の場合は配列に格納する。
+      if (storyId.includes(",")) {
+        ids = exchangeId(storyId as string);
+      } else {
+        ids = [Number(storyId)];
+      }
+
 
       // storyを取得する。
       await getStories(ids).then((res) => {
