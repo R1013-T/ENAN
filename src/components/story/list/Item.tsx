@@ -1,6 +1,7 @@
 import { Story } from "@/types/tableType";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
+import { VscArrowRight } from "react-icons/vsc";
 
 interface Props {
   story: Story;
@@ -57,21 +58,26 @@ const Item = (props: Props) => {
 
   return (
     <div
-      className="boxShadow h-14 my-3 rounded-md cursor-pointer flex overflow-hidden"
+      className="boxShadow h-14 my-3 rounded-md cursor-pointer flex justify-between overflow-hidden"
       id={props.storyIds.id}
       ref={storyItemRef}
       onClick={handleClickStory}
     >
-      <div className="mx-2">
-        <img
-          src={`/images/characters/${person_id}.png`}
-          alt=""
-          className="h-14 w-14 scale-150 translate-y-3"
-        />
+      <div className="flex">
+        <div className="mx-2">
+          <img
+            src={`/images/characters/${person_id}.png`}
+            alt=""
+            className="h-14 w-14 scale-150 translate-y-3"
+          />
+        </div>
+        <div className="flex flex-col justify-center">
+          <p className="text-xs text-theme-black">{props.story.person}</p>
+          <p className=" text-base">{props.story.title}</p>
+        </div>
       </div>
-      <div className="flex flex-col justify-center">
-        <p className="text-xs text-theme-black">{props.story.person}</p>
-        <p className=" text-base">{props.story.title}</p>
+      <div className="px-3 grid place-items-center">
+        <VscArrowRight size={20} />
       </div>
     </div>
   );
