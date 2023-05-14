@@ -75,14 +75,16 @@ const List = (props: Props) => {
         <h1 className="mx-6 mt-16 mb-5 text-xl tracking-widest boxShadow text-center py-2 rounded-md">
           ストーリー
         </h1>
-        {groupList.map((group, index) => (
-          <Group
-            key={index}
-            currenStories={currentStories}
-            group={group}
-            startStory={props.startStory}
-          />
-        ))}
+        {groupList[0]
+          ? groupList.map((group, index) => (
+              <Group
+                key={index}
+                currenStories={currentStories}
+                group={group}
+                startStory={props.startStory}
+              />
+            ))
+          : ""}
       </div>
     </div>
   );

@@ -53,6 +53,7 @@ const Index = () => {
         <form
           className="absolute bottom-0 w-full p-6"
           onSubmit={handleSubmit(onSubmit)}
+          autoComplete="off"
         >
           <label
             htmlFor="name"
@@ -63,15 +64,15 @@ const Index = () => {
           <input
             id="name"
             type="text"
-            className="w-full bg-transparent border border-theme-black text-base py-3 px-3 rounded outline-none tracking-wider placeholder:tracking-wider placeholder:text-sm"
+            className="w-full bg-transparent border border-theme-black text-base py-3 px-3 rounded outline-none tracking-wider placeholder:tracking-wider placeholder:text-sm boxShadow"
             placeholder="User Name"
             {...register("name")}
           />
-          <p className="text-xs text-red-300 h-1 py-5 mb-5">
+          <p className="text-xs text-red-300 h-1 py-3 mb-3">
             {errors.name?.message}
           </p>
           <button
-            className={`w-full bg-theme-red py-2 rounded tracking-widest text-lg transition-all flex justify-center items-center ${
+            className={`w-full bg-theme-red py-2.5 rounded tracking-widest text-lg transition-all flex justify-center items-center boxShadow ${
               errors.name?.message ? "opacity-40" : ""
             } ${isLoading ? "opacity-40" : ""}`}
             type="submit"

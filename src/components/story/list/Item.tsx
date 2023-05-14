@@ -22,12 +22,14 @@ const Item = (props: Props) => {
 
   const handleClickStory = () => {
     let storyId = storyItemRef.current.id;
+    const idArray = storyId.split(",");
+    storyId = `${idArray[0]},${idArray[idArray.length - 1]}`;
 
     router.push({
       pathname: "/story",
       query: { id: router.query.id, story: storyId },
     });
-    props.startStory(storyItemRef.current.id);
+    props.startStory(storyId);
   };
 
   useEffect(() => {
@@ -65,11 +67,15 @@ const Item = (props: Props) => {
     >
       <div className="flex">
         <div className="ml-3 mr-2">
-          <img
-            src={`/images/characters/${person_id}.png`}
-            alt=""
-            className="h-14 w-14 scale-150 translate-y-3"
-          />
+          {person_id ? (
+            <img
+              src={`/images/characters/${person_id}.png`}
+              alt=""
+              className="h-14 w-14 scale-150 translate-y-3"
+            />
+          ) : (
+            ""
+          )}
         </div>
         <div className="flex flex-col justify-center">
           <p className="text-xs text-theme-black">{props.story.person}</p>

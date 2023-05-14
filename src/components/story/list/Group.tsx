@@ -34,7 +34,7 @@ const Group = (props: Props) => {
 
             storyIds.forEach((id, index) => {
               if (id.title === story.title) {
-                storyIds[index].id = `${id.id},${story.id}`;
+                storyIds[index].id = `${storyIds[index].id},${story.id}`;
               }
             });
           }
@@ -52,8 +52,8 @@ const Group = (props: Props) => {
   }, []);
 
   return (
-    <div className="downShadow mt-4 mx-6 px-5 pb-1 rounded-md">
-      <p className="mt-4 tracking-widest text-theme-black text-xs">
+    <div className="downShadow mt-4 mx-6 px-5 pb-1.5 rounded-md">
+      <p className="mt-4 w-full text-center racking-widest text-theme-black text-xs">
         {props.group}
       </p>
       {groupStories.map((story, index) => (

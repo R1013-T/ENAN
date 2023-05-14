@@ -58,7 +58,6 @@ const Story = () => {
         ids = [Number(storyId)];
       }
 
-
       // storyを取得する。
       await getStories(ids).then((res) => {
         if (!res) return;

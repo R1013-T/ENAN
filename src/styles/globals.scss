@@ -42,9 +42,7 @@ canvas {
 }
 
 .usen {
-  white-space: pre-wrap;
   word-wrap: break-word;
-  line-break: strict;
   word-break: keep-all;
 }
 
@@ -56,7 +54,7 @@ canvas {
 .downShadow {
   border: 2px solid #272727;
   box-shadow: -5px -5px 5px rgba(92, 92, 92, 0.1),
-    10px 10px 10px rgba(0, 0, 0, 0.4), inset -5px -5px 5px rgba(82, 82, 82, 0.2),
+    10px 10px 10px rgba(0, 0, 0, 0.4), inset -4px -4px 4px rgba(82, 82, 82, 0.2),
     inset 10px 10px 10px rgba(0, 0, 0, 0.4);
 }
 
