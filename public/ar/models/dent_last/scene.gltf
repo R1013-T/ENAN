@@ -129,7 +129,7 @@
     "extras": {
       "author": "vo_w_ac (https://sketchfab.com/vo_w_ac)",
       "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
-      "source": "https://sketchfab.com/3d-models/concave-4e53316a1ce64bf4a477a96d15b96694",
+      "source": "https://sketchfab.com/3d-models/concave-c9f9089b747a4079b32bb856de1a51cc",
       "title": "Concave"
     },
     "generator": "Sketchfab-15.22.0",
@@ -168,12 +168,15 @@
   "materials": [
     {
       "doubleSided": true,
-      "emissiveFactor": [
-        0.239553,
-        0.239553,
-        0.239553
-      ],
-      "name": "material",
+      "name": "material_0",
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.6
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "Material",
       "pbrMetallicRoughness": {
         "baseColorFactor": [
           0.8,
@@ -182,7 +185,7 @@
           1.0
         ],
         "metallicFactor": 0.0,
-        "roughnessFactor": 0.5
+        "roughnessFactor": 0.4
       }
     }
   ],
@@ -213,7 +216,7 @@
             "TEXCOORD_1": 7
           },
           "indices": 8,
-          "material": 0,
+          "material": 1,
           "mode": 4
         }
       ]
