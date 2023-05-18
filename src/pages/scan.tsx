@@ -2,15 +2,18 @@ import Head from "next/head";
 import Script from "next/script";
 import { useEffect, useState } from "react";
 
-import useMarkerAr from "../../utils/ar/useMarkerAr";
+import useMarkerAr from "@/hooks/ar/useMarkerAr";
 
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { useRouter } from "next/router";
+import { Layout } from "@/components/Layout";
 
 const Scan = () => {
-  // 順番大事です。
-  const markers = ["lock", "dent"];
+  const router = useRouter();
+  const { id } = router.query;
 
+  const markers = ["lock", "dent"];
   const [foundMarker, setFoundMarker] = useState("");
 
   const {
@@ -30,11 +33,6 @@ const Scan = () => {
       arToolkitContext &&
       arMarkerControls
     ) {
-      console.log("markers", markers);
-      console.log("markerRoots", markerRoots);
-      console.log("arToolkitSource", arToolkitSource);
-      console.log("arToolkitContext", arToolkitContext);
-      console.log("arMarkerControls", arMarkerControls);
       arSetUp();
     }
   }, [markerRoots, arToolkitSource, arToolkitContext, arMarkerControls]);
@@ -63,7 +61,7 @@ const Scan = () => {
       );
     });
     arMarkerControls[0].addEventListener("markerLost", () => {
-      setFoundMarker("");
+      setFoundMarker("lost");
     });
 
     arMarkerControls[1].addEventListener("markerFound", () => {
@@ -76,7 +74,7 @@ const Scan = () => {
       );
     });
     arMarkerControls[1].addEventListener("markerLost", () => {
-      setFoundMarker("");
+      setFoundMarker("lost");
     });
 
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -92,7 +90,7 @@ const Scan = () => {
     const wrapper = document.querySelector(".wrapper") as HTMLDivElement;
     arToolkitSource.init(() => {
       wrapper.appendChild(arToolkitSource.domElement);
-      setTimeout(handleResize, 400);
+      setTimeout(handleResize, 600);
     });
 
     for (let i = 0; i < markers.length; i++) {
@@ -111,9 +109,10 @@ const Scan = () => {
             model.rotation.set(-Math.PI / 2, 0, 0);
             break;
           case "dent":
-            model.scale.set(2, 2, 2);
+            model.scale.set(1, 1, 1);
             model.position.set(0, 0, 0);
-            model.rotation.set(0, 0, 0);
+            model.rotation.set(Math.PI / 2, 0, 0);
+            // model.rotation.set(0, 0, 0);
             break;
 
           default:
@@ -143,22 +142,30 @@ const Scan = () => {
   };
 
   useEffect(() => {
-    if (foundMarker) {
-      console.log(`${foundMarker} found`);
-    } else {
-      console.log(`lost`);
+    switch (foundMarker) {
+      case "lost":
+        console.log(`lost`);
+        break;
+      case "":
+        break;
+      default:
+        console.log(`${foundMarker} found`);
+        break;
     }
   }, [foundMarker]);
 
+  // const handleDashboard = () => {
+  //   router.reload();
+  // };
+
+  // const startScan = () => {
+  //   document.location.reload();
+  // };
+
   return (
-    <>
-      <Head>
-        <title>AR.js THREE.js NEXT.js TypeScript</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <Layout headerType="sub" title="AR">
       <Script src="https://unpkg.com/three@0.127.0/build/three.min.js" />
-      <main className="w-screen h-screen overflow-hidden">
+      <main className="fixed top-0 left-0 w-screen h-screen overflow-hidden">
         <div
           id="wrapper"
           className="wrapper w-full h-full relative overflow-hidden"
@@ -166,7 +173,7 @@ const Scan = () => {
           <canvas id="canvas"></canvas>
         </div>
       </main>
-    </>
+    </Layout>
   );
 };
 
