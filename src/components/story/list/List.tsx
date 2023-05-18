@@ -5,6 +5,7 @@ import { getUser } from "@/hooks/supabase/useUserFunctions";
 import { Story, User } from "@/types/tableType";
 import { getStories } from "@/hooks/supabase/useStoryFunctions";
 import { exchangeId } from "@/hooks/useCommaSeparatedIdsToArray";
+import Title from "@/components/panel/Title";
 
 interface Props {
   startStory: Function;
@@ -72,9 +73,7 @@ const List = (props: Props) => {
   return (
     <div className="h-full px-6">
       <div className=" h-screen w-screen max-w-md -translate-x-6 pb-28 overflow-y-scroll">
-        <h1 className="mx-6 mt-16 mb-5 text-xl tracking-widest boxShadow text-center py-2 rounded-md">
-          ストーリー
-        </h1>
+        <Title title="ストーリー" />
         {groupList[0]
           ? groupList.map((group, index) => (
               <Group

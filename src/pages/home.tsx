@@ -1,6 +1,6 @@
 import { Layout } from "@/components/Layout";
-import UnderButton from "@/components/underButton/UnderButton";
-import Link from "next/link";
+import Clues from "@/components/home/clues/Clues";
+import People from "@/components/home/people/People";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
@@ -8,18 +8,22 @@ const Dashboard = () => {
   const router = useRouter();
   const { id } = router.query;
 
-  const changeScan = () => {
-    const params = {
-      id: id as string,
-    };
-    const urlSearchParam = new URLSearchParams(params).toString();
+  useEffect(() => {
+    console.log(id);
 
-    document.location.href = "/scan/?" + urlSearchParam;
-  };
+    //! ユーザー情報取得
+
+    //! 容疑者情報取得
+
+    //! 手がかり情報取得
+  }, [id]);
 
   return (
     <Layout headerType="sub" title="ホーム">
-      <p></p>
+      <div className="w-full h-screen overflow-y-scroll">
+        <People />
+        <Clues />
+      </div>
     </Layout>
   );
 };

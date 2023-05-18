@@ -109,9 +109,10 @@ const Scan = () => {
             model.rotation.set(-Math.PI / 2, 0, 0);
             break;
           case "dent":
-            model.scale.set(2, 2, 2);
+            model.scale.set(1, 1, 1);
             model.position.set(0, 0, 0);
-            model.rotation.set(0, 0, 0);
+            model.rotation.set(Math.PI / 2, 0, 0);
+            // model.rotation.set(0, 0, 0);
             break;
 
           default:

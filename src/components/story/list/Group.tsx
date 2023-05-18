@@ -1,6 +1,7 @@
 import { Story } from "@/types/tableType";
 import Item from "./Item";
 import { useEffect, useState } from "react";
+import { Frame } from "@/components/panel/downShadowFrame";
 
 interface Props {
   currenStories: Story[];
@@ -52,7 +53,7 @@ const Group = (props: Props) => {
   }, []);
 
   return (
-    <div className="downShadow mt-4 mx-6 px-5 pb-1.5 rounded-md">
+    <Frame >
       <p className="mt-4 w-full text-center racking-widest text-theme-black text-xs">
         {props.group}
       </p>
@@ -64,7 +65,7 @@ const Group = (props: Props) => {
           startStory={props.startStory}
         />
       ))}
-    </div>
+    </Frame>
   );
 };
 
