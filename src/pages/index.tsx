@@ -39,7 +39,7 @@ const Index = () => {
 
         router.push({
           pathname: "/story",
-          query: { id: id, story: "1,4" },
+          query: { id: id, story: "1,2" },
         });
       })
       .catch((err) => {
