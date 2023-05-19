@@ -7,9 +7,14 @@ interface Props {
 }
 
 const PersonItem = (props: Props) => {
+
+  const handlePersonDetail = () => {
+    console.log("personDetail", props.person)
+  }
+
   return (
     <Panel>
-      <div className="w-full h-27 overflow-hidden flex">
+      <div className="w-full h-27 overflow-hidden flex" onClick={handlePersonDetail}>
         <img src={`/images/characters/${props.person.id}.png`} className="w-24 mt-2" alt="" />
         <div className="grid place-items-center">
           <p className="text-xl w-full tracking-widest mb-2">

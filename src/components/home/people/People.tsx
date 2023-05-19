@@ -9,10 +9,6 @@ interface Props {
 }
 
 const People = (props: Props) => {
-  useEffect(() => {
-    console.log("gotPeople", props.gotPeople);
-  }, []);
-
   return (
     <div>
       <Title title="容疑者" />
