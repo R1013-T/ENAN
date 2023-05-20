@@ -10,7 +10,7 @@ interface Props {
 
 const Clues = (props: Props) => {
   return (
-    <div className="pb-28">
+    <div className="pb-28 -mt-5">
       <Title title="手がかり" />
       <Frame>
         <div className="flex flex-wrap justify-around pt-5">

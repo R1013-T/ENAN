@@ -57,7 +57,7 @@ const Dashboard = () => {
   }, [id]);
 
   return (
-    <Layout headerType="sub" title="ホーム">
+    <Layout headerType="sub" title="ホーム" >
       <div className="w-full h-screen overflow-y-scroll">
         {gotPeople[0] ? <People gotPeople={gotPeople} /> : ""}
         {gotClues[0] ? <Clues gotClues={gotClues} /> : ""}
