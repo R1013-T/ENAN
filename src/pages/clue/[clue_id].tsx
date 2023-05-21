@@ -26,20 +26,6 @@ const ClueDetail = () => {
     setClueId(clue_id);
   }, [router.isReady]);
 
-  useEffect(() => {
-    console.log(clueId);
-  }, [clueId]);
-
-  const handleTest = () => {
-
-    let array1 = [1, 2, 3]
-    let array2 = [4, 5, 6]
-    
-    array1 = array1.concat(array2)
-    console.log(array1)
-
-  };
-
   return (
     <Layout title="手がかり" headerType="sub" hideUnderButton={true}>
       <Title title={clueName as string} />
@@ -53,8 +39,6 @@ const ClueDetail = () => {
       ) : (
         ""
       )}
-
-      <button onClick={handleTest}>aa</button>
 
       <DetailUnderButton buttonText="調べる" storyId={storyId as string} />
     </Layout>
