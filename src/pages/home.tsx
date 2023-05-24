@@ -25,7 +25,6 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (!id) return;
-    console.log(id);
 
     let user: User | undefined;
     let getPeopleIds: string[] = [];
