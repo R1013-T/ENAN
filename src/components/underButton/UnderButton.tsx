@@ -28,7 +28,7 @@ const UnderButton = () => {
           }`}
         />
       </div>
-      <Item name="hint" />
+      <Item name="progress" />
       <Item name="end" />
     </div>
   );

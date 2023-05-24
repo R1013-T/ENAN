@@ -1,12 +1,12 @@
 import { Layout } from "@/components/Layout";
 import UnderButton from "@/components/underButton/UnderButton";
 
-const Hints = () => {
+const End = () => {
   return (
-    <Layout headerType="sub" title="ヒント">
+    <Layout headerType="sub" title="エンド">
       <p>hint</p>
     </Layout>
   );
 };
 
-export default Hints;
+export default End;
