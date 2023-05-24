@@ -5,35 +5,41 @@ import { Person } from "@/types/tableType";
 import { Panel } from "../panel/boxShadowPanel";
 
 interface Props {
-  person: Person;
+  person: Person | string;
   changeDecisionPerson: Function;
 }
 
 const Decision = (props: Props) => {
   return (
-    <div className="fixed top-0 right-0 h-screen w-screen bg-bg-black/80 pb-5">
+    <div className="fixed top-0 right-0 h-screen w-screen bg-bg-black/80">
       <div className="w-full max-w-md mx-auto h-full relative grid place-items-center ">
         <Frame>
           <div className="bg-bg-black">
-            <p className="my-4 w-full text-center racking-widest text-base mb-2 text-white">
-              {props.person.name}
-            </p>
+            {typeof props.person === "string" ? (
+              <p className="my-5 mx-4">この中に犯人は居ない</p>
+            ) : (
+              <>
+                <p className="my-4 w-full text-center racking-widest text-base mb-2 text-white">
+                  {props.person.name}
+                </p>
 
-            <Panel>
-              <div className="pt-3">
-                <img
-                  src={`/images/characters/${props.person.id}.png`}
-                  className="w-36 mt-2 mx-auto"
-                  alt=""
-                />
-              </div>
-            </Panel>
+                <Panel>
+                  <div className="pt-3">
+                    <img
+                      src={`/images/characters/${props.person.id}.png`}
+                      className="w-2/3 mt-2 mx-auto"
+                      alt=""
+                    />
+                  </div>
+                </Panel>
+              </>
+            )}
           </div>
         </Frame>
 
-        <div className="absolute bottom-5 px-6 w-full flex justify-between">
+        <div className="absolute bottom-6 px-6 w-full flex justify-between">
           <button
-            className="w-6/12 mr-2 py-2.5 rounded tracking-widest text-lg bg-theme-black flex justify-center items-center boxShadow"
+            className="w-6/12 h-15 mr-2 py-2.5 rounded tracking-widest text-lg bg-theme-black flex justify-center items-center boxShadow"
             onClick={() => props.changeDecisionPerson(null)}
           >
             <div className="w-5 h-6 grid place-items-center">
@@ -41,7 +47,7 @@ const Decision = (props: Props) => {
             </div>
             <p className="px-2">戻る</p>
           </button>
-          <button className="w-6/12 py-2.5 rounded tracking-widest text-lg bg-theme-red text-center block boxShadow">
+          <button className="w-6/12 h-15 py-2.5 rounded tracking-widest text-lg bg-theme-red text-center block boxShadow">
             決定
           </button>
         </div>

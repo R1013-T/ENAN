@@ -122,7 +122,7 @@ const Hints = () => {
 
   return (
     <Layout headerType="sub" title="進捗">
-      <div className="h-screen overflow-y-scroll pb-28">
+      <div className="h-screen overflow-y-scroll pb-28 w-screen">
         <Title title="進捗" />
         <Frame>
           <div className="my-4 w-full text-center racking-widest text-theme-black text-xs">

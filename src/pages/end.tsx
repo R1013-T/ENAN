@@ -22,9 +22,11 @@ const End = () => {
   const { id } = router.query;
 
   const [gotPeople, setGotPeople] = useState<Person[]>([]);
-  const [decisionPerson, setDecisionPerson] = useState<Person | null>();
+  const [decisionPerson, setDecisionPerson] = useState<
+    Person | null | string
+  >();
 
-  const changeDecisionPerson = (person: Person | null) => {
+  const changeDecisionPerson = (person: Person | null | string) => {
     setDecisionPerson(person);
   };
 
@@ -101,8 +103,10 @@ const End = () => {
       <div className="h-screen overflow-y-scroll pb-28">
         <Title title="犯人決定" />
         <Frame>
-          <p className="mt-4 w-full text-center racking-widest text-theme-black text-xs">
+          <p className="mt-4 w-full text-center racking-widest text-theme-black text-xs leading-5 ">
             犯人だと思う人を選んでください
+            <br />
+            ストーリーが終了します
           </p>
           {gotPeople.map((person: Person) => (
             <PersonItem
@@ -112,7 +116,10 @@ const End = () => {
             />
           ))}
           <Panel>
-            <div className="w-full h-27 overflow-hidden flex justify-between">
+            <div
+              className="w-full h-27 overflow-hidden flex justify-between"
+              onClick={() => changeDecisionPerson("none")}
+            >
               <div className="w-13"></div>
               <div className="grid place-items-center text-center">
                 <p>この中に犯人は居ない</p>
