@@ -105,8 +105,6 @@ const End = () => {
         <Frame>
           <p className="mt-4 w-full text-center racking-widest text-theme-black text-xs leading-5 ">
             犯人だと思う人を選んでください
-            <br />
-            ストーリーが終了します
           </p>
           {gotPeople.map((person: Person) => (
             <PersonItem

@@ -13,7 +13,10 @@ const Scan = () => {
   const router = useRouter();
   const { id } = router.query;
 
-  const markers = ["lock", "dent"];
+  const markers = [
+    "lock",
+    "dent",
+  ];
   const [foundMarker, setFoundMarker] = useState("");
 
   const {
