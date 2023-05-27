@@ -1,11 +1,11 @@
 Model Information:
-* title:	air conditioner remote control 3d scan
-* source:	https://sketchfab.com/3d-models/air-conditioner-remote-control-3d-scan-776d44b2465f4c2c856fbe74c21d5927
-* author:	kitcad3d (https://sketchfab.com/kitCAD3d)
+* title:	Remote Controller
+* source:	https://sketchfab.com/3d-models/remote-controller-d72eebbf82be48f0a53e7e8b712e6a66
+* author:	dartuchiwa (https://sketchfab.com/dartuchiwa)
 
 Model License:
 * license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
 * requirements:	Author must be credited. Commercial use is allowed.
 
 If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
-This work is based on "air conditioner remote control 3d scan" (https://sketchfab.com/3d-models/air-conditioner-remote-control-3d-scan-776d44b2465f4c2c856fbe74c21d5927) by kitcad3d (https://sketchfab.com/kitCAD3d) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+This work is based on "Remote Controller" (https://sketchfab.com/3d-models/remote-controller-d72eebbf82be48f0a53e7e8b712e6a66) by dartuchiwa (https://sketchfab.com/dartuchiwa) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

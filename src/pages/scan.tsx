@@ -13,7 +13,15 @@ const Scan = () => {
   const router = useRouter();
   const { id } = router.query;
 
-  const markers = ["lock", "dent", "chair", "controller", "earrings","knife","water"];
+  const markers = [
+    "lock",
+    "dent",
+    "chair",
+    "controller",
+    "earrings",
+    "knife",
+    "water",
+  ];
   const [foundMarker, setFoundMarker] = useState("");
 
   const {
@@ -86,9 +94,7 @@ const Scan = () => {
     scene.add(light);
 
     for (let i = 0; i < markers.length; i++) {
-
       scene.add(markerRoots[i]);
-
 
       const lockLoader = new GLTFLoader();
       const lockUrl = `/ar/models/${markers[i]}/scene.gltf`;
@@ -102,13 +108,13 @@ const Scan = () => {
             model.position.set(0.5, 0, 1.3);
             model.rotation.set(-Math.PI / 2, 0, 0);
             break;
-          
+
           case "dent":
             model.scale.set(1, 1, 1);
             model.position.set(0, 0, 0);
-            model.rotation.set(0, Math.PI, 0);
+            model.rotation.set(0, 0, 0);
             break;
-          
+
           case "chair":
             model.scale.set(3, 3, 3);
             model.position.set(0, 0, 0);
@@ -116,27 +122,27 @@ const Scan = () => {
             break;
 
           case "controller":
-            model.scale.set(100, 100, 100);
+            model.scale.set(1, 1, 1);
+            model.position.set(0, 0, 0);
+            model.rotation.set(-Math.PI / 2, 0, 0);
+            break;
+
+          case "earrings":
+            model.scale.set(0.5, 0.5, 0.5);
             model.position.set(0, 0, 0);
             model.rotation.set(0, 0, 0);
             break;
 
-          case "earrings":
-            model.scale.set(10, 10, 10);
-            model.position.set(0, 0, 0);
-            model.rotation.set(-Math.PI / 2, 0, 0);
-            break;
-          
           case "knife":
             model.scale.set(1, 1, 1);
             model.position.set(0, 0, 0);
             model.rotation.set(-Math.PI / 2, 0, 0);
             break;
-          
+
           case "water":
-            model.scale.set(1, 1, 1);
+            model.scale.set(0.1, 0.1, 0.1);
             model.position.set(0, 0, 0);
-            model.rotation.set(-Math.PI / 2, 0, 0);
+            model.rotation.set(0, 0, 0);
             break;
 
           default:
