@@ -9,10 +9,20 @@ export const createUser = async (id: string, name: string) => {
   await supabase.from("users").insert({ id, name });
   const user = await supabase.from("users").select("*").eq("id", id);
 
-  return user
+  return user;
 };
 
 export const getUser = async (id: string) => {
   const user = await supabase.from("users").select("*").eq("id", id);
   return user;
-}
+};
+
+export const updateUserGetStories = async (
+  userId: string,
+  storyIds: string
+) => {
+  const { error } = await supabase
+    .from("users")
+    .update({ get_stories: storyIds })
+    .eq("id", userId);
+};

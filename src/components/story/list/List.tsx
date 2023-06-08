@@ -54,7 +54,7 @@ const List = (props: Props) => {
     if (storeGetStories) {
       setCurrentStories(storeGetStories)
     } else {
-      // ない場合はSPから取得
+      // ない場合はSBから取得
       await getStories(storyIds).then((res) => {
         if (!res) return;
         setCurrentStories(res);
@@ -90,14 +90,6 @@ const List = (props: Props) => {
     });
 
     setGroupList(groups);
-  }, [currentStories]);
-
-  useEffect(() => {
-    console.log("storeGetStories", storeGetStories);
-  }, [storeGetStories]);
-
-  useEffect(() => {
-    console.log("currentStories", currentStories);
   }, [currentStories]);
 
   return (

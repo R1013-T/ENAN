@@ -58,10 +58,6 @@ const Index = () => {
       });
   };
 
-  useEffect(() => {
-    console.log("index", user);
-  }, [user]);
-
   return (
     <Layout headerType="top" title="">
       <div className="h-full relative">
