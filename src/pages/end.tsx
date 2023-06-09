@@ -90,10 +90,6 @@ const End = () => {
     setGotPeople(getPeopleInfo);
   };
 
-  useEffect(() => {
-    console.log(gotPeople);
-  }, [gotPeople]);
-
   return (
     <Layout
       headerType="sub"
