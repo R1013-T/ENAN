@@ -19,14 +19,16 @@ const Result = () => {
     const playConfetti = setInterval(function () {
       i += 1;
       if (i > 7) clearInterval(playConfetti);
-      if (router.pathname !== "/result") clearInterval(playConfetti);
-
-      confetti({
-        angle: randomInRange(55, 125),
-        spread: randomInRange(50, 70),
-        particleCount: randomInRange(50, 100),
-        origin: { y: 0.6 },
-      });
+      if (window.location.pathname === "/result") {
+        confetti({
+          angle: randomInRange(55, 125),
+          spread: randomInRange(50, 70),
+          particleCount: randomInRange(50, 100),
+          origin: { y: 0.6 },
+        });
+      } else {
+        clearInterval(playConfetti);
+      }
     }, 100);
 
     const playConfettiInfinite = setInterval(function () {
@@ -38,7 +40,6 @@ const Result = () => {
           origin: { y: 0.6 },
         });
       } else {
-        console.log("a");
         clearInterval(playConfettiInfinite);
       }
     }, 1000);
