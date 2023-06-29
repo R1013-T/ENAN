@@ -37,6 +37,7 @@ export default function useMarkerAr({ THREE, markers }) {
     const arToolkitContext = new THREEx.ArToolkitContext({
       cameraParametersUrl: "/ar/camera/camera.dat",
       detectionMode: "mono",
+      patternRatio: 0.7,
     });
     const arToolkitSource = new THREEx.ArToolkitSource({
       sourceType: "webcam",

@@ -4,7 +4,7 @@ import { Story } from "@/types/tableType";
 export const getStories = async (ids: number[]) => {
   const stories: Story[] = [];
 
-  // https://zenn.dev/sora_kumo/articles/612ca66c68ff52
+  //! store を 確認する
 
   let p = Promise.resolve();
   ids.forEach(async (id) => {

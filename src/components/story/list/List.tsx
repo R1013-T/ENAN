@@ -6,12 +6,20 @@ import { Story, User } from "@/types/tableType";
 import { getStories } from "@/hooks/supabase/useStoryFunctions";
 import { exchangeId } from "@/hooks/useCommaSeparatedIdsToArray";
 import Title from "@/components/panel/Title";
+import { useGetStoriesStore, useUserStore } from "@/libs/store";
 
 interface Props {
   startStory: Function;
 }
 
 const List = (props: Props) => {
+  const storeUser = useUserStore((state) => state.user);
+  const updateStoreUser = useUserStore((state) => state.updateUser);
+  const storeGetStories = useGetStoriesStore((state) => state.getStories);
+  const updateStoreGetStories = useGetStoriesStore(
+    (state) => state.updateGetStories
+  );
+
   const router = useRouter();
 
   const [user, setUser] = useState<User>();
@@ -26,19 +34,33 @@ const List = (props: Props) => {
   const getUserInfo = async () => {
     if (!router.isReady) return;
 
-    // user情報を取得
-    await getUser(router.query.id as string).then((res) => {
-      if (!res.data) return;
-      setUser(res.data[0] as User);
-    });
+    // storeにuser情報があるか確認
+    if (storeUser.id) {
+      setUser(storeUser);
+    } else {
+      // ない場合はSPからuser情報を取得
+      await getUser(router.query.id as string).then((res) => {
+        if (!res.data) return;
+
+        setUser(res.data[0] as User);
+        // storeに保存
+        updateStoreUser(res.data[0] as User);
+      });
+    }
   };
 
   const getStory = async (storyIds: number[]) => {
-    // storyを取得
-    await getStories(storyIds).then((res) => {
-      if (!res) return;
-      setCurrentStories(res);
-    });
+    // storeにgetStories情報があるか確認
+    if (storeGetStories) {
+      setCurrentStories(storeGetStories)
+    } else {
+      // ない場合はSBから取得
+      await getStories(storyIds).then((res) => {
+        if (!res) return;
+        setCurrentStories(res);
+        updateStoreGetStories(res)
+      });
+    }
   };
 
   useEffect(() => {

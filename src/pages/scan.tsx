@@ -13,7 +13,15 @@ const Scan = () => {
   const router = useRouter();
   const { id } = router.query;
 
-  const markers = ["lock", "dent"];
+  const markers = [
+    "lock",
+    "dent",
+    "chair",
+    "controller",
+    "earrings",
+    "knife",
+    "water",
+  ];
   const [foundMarker, setFoundMarker] = useState("");
 
   const {
@@ -51,31 +59,20 @@ const Scan = () => {
     const lostDelay = 700;
     let timer: ReturnType<typeof setTimeout>;
 
-    arMarkerControls[0].addEventListener("markerFound", () => {
-      setFoundMarker(markers[0]);
+    for (let i = 0; i < markers.length; i++) {
+      arMarkerControls[i].addEventListener("markerFound", () => {
+        setFoundMarker(markers[i]);
 
-      clearTimeout(timer);
-      timer = setTimeout(
-        () => arMarkerControls[0].dispatchEvent({ type: "markerLost" }),
-        lostDelay
-      );
-    });
-    arMarkerControls[0].addEventListener("markerLost", () => {
-      setFoundMarker("lost");
-    });
-
-    arMarkerControls[1].addEventListener("markerFound", () => {
-      setFoundMarker(markers[1]);
-
-      clearTimeout(timer);
-      timer = setTimeout(
-        () => arMarkerControls[1].dispatchEvent({ type: "markerLost" }),
-        lostDelay
-      );
-    });
-    arMarkerControls[1].addEventListener("markerLost", () => {
-      setFoundMarker("lost");
-    });
+        clearTimeout(timer);
+        timer = setTimeout(
+          () => arMarkerControls[i].dispatchEvent({ type: "markerLost" }),
+          lostDelay
+        );
+      });
+      arMarkerControls[i].addEventListener("markerLost", () => {
+        setFoundMarker("lost");
+      });
+    }
 
     renderer.setSize(window.innerWidth, window.innerHeight);
 
@@ -93,6 +90,9 @@ const Scan = () => {
       setTimeout(handleResize, 600);
     });
 
+    const light = new THREE.AmbientLight(0xffffff, 1);
+    scene.add(light);
+
     for (let i = 0; i < markers.length; i++) {
       scene.add(markerRoots[i]);
 
@@ -108,11 +108,41 @@ const Scan = () => {
             model.position.set(0.5, 0, 1.3);
             model.rotation.set(-Math.PI / 2, 0, 0);
             break;
+
           case "dent":
             model.scale.set(1, 1, 1);
             model.position.set(0, 0, 0);
-            model.rotation.set(Math.PI / 2, 0, 0);
-            // model.rotation.set(0, 0, 0);
+            model.rotation.set(0, 0, 0);
+            break;
+
+          case "chair":
+            model.scale.set(3, 3, 3);
+            model.position.set(0, 0, 0);
+            model.rotation.set(-Math.PI / 2, 0, 0);
+            break;
+
+          case "controller":
+            model.scale.set(1, 1, 1);
+            model.position.set(0, 0, 0);
+            model.rotation.set(-Math.PI / 2, 0, 0);
+            break;
+
+          case "earrings":
+            model.scale.set(0.05, 0.05, 0.05);
+            model.position.set(0, 0, 0);
+            model.rotation.set(-Math.PI / 2, 0, 0);
+            break;
+
+          case "knife":
+            model.scale.set(1, 1, 1);
+            model.position.set(0, 0, 0);
+            model.rotation.set(-Math.PI / 2, 0, 0);
+            break;
+
+          case "water":
+            model.scale.set(1, 1, 1);
+            model.position.set(0, 0, 0);
+            model.rotation.set(0, 0, 0);
             break;
 
           default:
@@ -153,14 +183,6 @@ const Scan = () => {
         break;
     }
   }, [foundMarker]);
-
-  // const handleDashboard = () => {
-  //   router.reload();
-  // };
-
-  // const startScan = () => {
-  //   document.location.reload();
-  // };
 
   return (
     <Layout headerType="sub" title="AR">

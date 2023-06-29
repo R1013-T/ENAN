@@ -16,3 +16,19 @@ export type Story = {
   title: string;
   content: string;
 };
+
+export type Person = {
+  id: number;
+  name: string;
+  post: string;
+  detail: string;
+  testimony_story_id: string;
+  conversation_story_id: string;
+};
+
+export type Clue = {
+  details: string;
+  id: number;
+  name: string;
+  story_id: string;
+};

@@ -4,7 +4,7 @@ interface Props {
 
 const Title = (props: Props) => {
   return (
-    <h1 className="mx-6 mt-16 mb-5 text-xl tracking-widest boxShadow text-center py-2 rounded-md">
+    <h1 className="boxShadow mx-6 mb-5 mt-16 rounded-md py-2 text-center text-xl tracking-widest">
       {props.title}
     </h1>
   );

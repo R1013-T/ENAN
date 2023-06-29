@@ -12,12 +12,11 @@
     "@hookform/resolvers": "^3.1.0",
     "@supabase/supabase-js": "^2.21.0",
     "@types/node": "18.16.3",
-<<<<<<< HEAD
-=======
     "@types/react": "^18.0.1",
->>>>>>> 679d8348f7dc4cfdbee0a228cff99d9bd1d8c5d3
     "@types/react-dom": "18.2.3",
     "autoprefixer": "10.4.14",
+    "canvas-confetti": "^1.6.0",
+    "chart.js": "^4.3.0",
     "next": "13.4.0",
     "postcss": "8.4.23",
     "react": "18.2.0",
@@ -33,10 +32,12 @@
     "zustand": "^4.3.8"
   },
   "devDependencies": {
+    "@types/canvas-confetti": "^1.6.0",
     "@types/react": "^18.0.1",
     "@types/three": "^0.152.0",
     "@types/uuid": "^9.0.1",
     "eslint": "8.40.0",
-    "eslint-config-next": "13.4.1"
+    "eslint-config-next": "13.4.1",
+    "prettier-plugin-tailwindcss": "^0.3.0"
   }
 }

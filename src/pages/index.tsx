@@ -6,17 +6,24 @@ import { validationSchema } from "@/utils/validationSchema";
 import { useRouter } from "next/router";
 import { createUser } from "@/hooks/supabase/useUserFunctions";
 import { v4 as uuidv4 } from "uuid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BiLoader } from "react-icons/bi";
+import { useUserStore } from "@/libs/store";
+import { User } from "@/types/tableType";
 interface TopForm {
   name: string;
 }
 
 const Index = () => {
+  // zustand
+  const user = useUserStore((state) => state.user);
+  const updateUser = useUserStore((state) => state.updateUser);
+
   const router = useRouter();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
+  // react-hook=form
   const {
     register,
     handleSubmit,
@@ -34,8 +41,12 @@ const Index = () => {
     const id = uuidv4();
 
     await createUser(id, data.name)
-      .then(() => {
+      .then((res) => {
+        if (!res.data) return;
+
         setIsLoading(false);
+
+        updateUser(res.data[0] as User);
 
         router.push({
           pathname: "/story",
