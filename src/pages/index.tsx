@@ -23,7 +23,7 @@ const Index = () => {
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  // react-hook=form
+  // react-hook-form
   const {
     register,
     handleSubmit,
@@ -60,7 +60,7 @@ const Index = () => {
 
   return (
     <Layout headerType="top" title="">
-      <div className="h-full relative">
+      <div className="relative h-full">
         <form
           className="absolute bottom-0 w-full p-6"
           onSubmit={handleSubmit(onSubmit)}
@@ -68,27 +68,27 @@ const Index = () => {
         >
           <label
             htmlFor="name"
-            className="block text-theme-black text-xs py-2 mb-1"
+            className="mb-1 block py-2 text-xs text-theme-black"
           >
             ユーザーネーム
           </label>
           <input
             id="name"
             type="text"
-            className="w-full bg-transparent border border-theme-black text-base py-3 px-3 rounded outline-none tracking-wider placeholder:tracking-wider placeholder:text-sm boxShadow"
+            className="boxShadow w-full rounded border border-theme-black bg-transparent px-3 py-3 text-base tracking-wider outline-none placeholder:text-sm placeholder:tracking-wider"
             placeholder="User Name"
             {...register("name")}
           />
-          <p className="text-xs text-red-300 h-1 py-3 mb-3">
+          <p className="mb-3 h-1 py-3 text-xs text-red-300">
             {errors.name?.message}
           </p>
           <button
-            className={`w-full bg-theme-red py-2.5 rounded tracking-widest text-lg transition-all flex justify-center items-center boxShadow ${
+            className={`boxShadow flex w-full items-center justify-center rounded bg-theme-red py-2.5 text-lg tracking-widest transition-all ${
               errors.name?.message ? "opacity-40" : ""
             } ${isLoading ? "opacity-40" : ""}`}
             type="submit"
           >
-            <div className="w-6 h-6 grid place-items-center">
+            <div className="grid h-6 w-6 place-items-center">
               <div className="rotationInfinite">
                 {isLoading ? <BiLoader size={20} /> : ""}
               </div>
