@@ -1,0 +1,11 @@
+Model Information:
+* title:	Concave_knife
+* source:	https://sketchfab.com/3d-models/concave-knife-57a6b5c8b9604433a4fdc50e5bfaed30
+* author:	vo_w_ac (https://sketchfab.com/vo_w_ac)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Concave_knife" (https://sketchfab.com/3d-models/concave-knife-57a6b5c8b9604433a4fdc50e5bfaed30) by vo_w_ac (https://sketchfab.com/vo_w_ac) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
