@@ -140,9 +140,9 @@ const Scan = () => {
             break;
 
           case "water":
-            model.scale.set(1, 1, 1);
+            model.scale.set(30, 30, 30);
             model.position.set(0, 0, 0);
-            model.rotation.set(0, 0, 0);
+            model.rotation.set(-Math.PI / 2, 0, 0);
             break;
 
           default:
