@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { getUser } from "@/hooks/supabase/useUserFunctions";
 import { Story, User } from "@/types/tableType";
 import { getStories } from "@/hooks/supabase/useStoryFunctions";
-import { exchangeId } from "@/hooks/useCommaSeparatedIdsToArray";
 import Title from "@/components/panel/Title";
 import { useGetStoriesStore, useUserStore } from "@/libs/store";
 
@@ -52,13 +51,13 @@ const List = (props: Props) => {
   const getStory = async (storyIds: number[]) => {
     // storeにgetStories情報があるか確認
     if (storeGetStories) {
-      setCurrentStories(storeGetStories)
+      setCurrentStories(storeGetStories);
     } else {
       // ない場合はSBから取得
       await getStories(storyIds).then((res) => {
         if (!res) return;
         setCurrentStories(res);
-        updateStoreGetStories(res)
+        updateStoreGetStories(res);
       });
     }
   };
@@ -94,7 +93,7 @@ const List = (props: Props) => {
 
   return (
     <div className="h-full px-6">
-      <div className=" h-screen w-screen max-w-md -translate-x-6 pb-28 overflow-y-scroll">
+      <div className=" h-screen w-screen max-w-md -translate-x-6 overflow-y-scroll pb-28">
         <Title title="ストーリー" />
         {groupList[0]
           ? groupList.map((group, index) => (
