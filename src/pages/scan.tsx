@@ -8,6 +8,8 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useRouter } from "next/router";
 import { Layout } from "@/components/Layout";
+import GetButton from "@/components/scan/GetButton";
+import CopyrightText from "@/components/scan/CopyrightText";
 
 const Scan = () => {
   const router = useRouter();
@@ -23,6 +25,7 @@ const Scan = () => {
     "water",
   ];
   const [foundMarker, setFoundMarker] = useState("");
+  const [isFound, setIsFound] = useState(false);
 
   const {
     markerRoots,
@@ -175,11 +178,13 @@ const Scan = () => {
     switch (foundMarker) {
       case "lost":
         console.log(`lost`);
+        setIsFound(false);
         break;
       case "":
         break;
       default:
         console.log(`${foundMarker} found`);
+        setIsFound(true);
         break;
     }
   }, [foundMarker]);
@@ -194,6 +199,10 @@ const Scan = () => {
         >
           <canvas id="canvas"></canvas>
         </div>
+          <div className={`fixed bottom-28 left-5 right-5 transition ${isFound ? "opacity-100" : "opacity-0"}`}>
+            <GetButton currentModel={foundMarker} />
+            <CopyrightText currentModel={foundMarker} />
+          </div>
       </main>
     </Layout>
   );

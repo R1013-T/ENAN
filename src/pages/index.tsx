@@ -15,7 +15,6 @@ interface TopForm {
 }
 
 const Index = () => {
-  // zustand
   const user = useUserStore((state) => state.user);
   const updateUser = useUserStore((state) => state.updateUser);
 
