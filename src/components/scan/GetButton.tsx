@@ -1,6 +1,6 @@
 import React from "react";
 import { useUserStore } from "@/libs/store";
-import {getUser, updateUserGetClues} from "@/hooks/supabase/useUserFunctions";
+import { getUser, updateUserGetClues } from "@/hooks/supabase/useUserFunctions";
 import { User } from "@/types/tableType";
 import { useRouter } from "next/router";
 
@@ -48,9 +48,8 @@ const GetButton = (props: Props) => {
     const currentModel = ClUES[props.currentModel as ModelKeys ];
     const getClueIds = user?.get_clues?.split(",") as string[];
 
-    if (getClueIds.includes(currentModel.id.toString())) {
+    if (getClueIds && getClueIds.includes(currentModel.id.toString())) {
       console.log("get_cluesに存在する");
-      return;
     } else {
       console.log("get_cluesに存在しない");
       // 存在しない場合
