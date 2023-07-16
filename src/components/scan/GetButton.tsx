@@ -18,13 +18,13 @@ type ModelKeys =
   | "water";
 
 const ClUES = {
-  lock: { id: 1, name: "玄関の鍵" },
-  knife: { id: 2, name: "包丁" },
-  controller: { id: 3, name: "エアコンのリモコン" },
-  water: { id: 4, name: "濡れた床" },
-  dent: { id: 5, name: "へこんだ床" },
-  chair: { id: 6, name: "椅子" },
-  earrings: { id: 7, name: "イヤリング" },
+  lock: { id: 1, name: "玄関の鍵", storyId: "22,23" },
+  knife: { id: 2, name: "包丁", storyId: "24,25" },
+  controller: { id: 3, name: "エアコンのリモコン", storyId: "26,28" },
+  water: { id: 4, name: "濡れた床", storyId: "29,30" },
+  dent: { id: 5, name: "へこんだ床", storyId: "31" },
+  chair: { id: 6, name: "椅子", storyId: "32" },
+  earrings: { id: 7, name: "イヤリング", storyId: "33,41" },
 };
 
 const GetButton = (props: Props) => {
