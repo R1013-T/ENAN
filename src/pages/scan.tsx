@@ -192,17 +192,21 @@ const Scan = () => {
   return (
     <Layout headerType="sub" title="AR">
       <Script src="https://unpkg.com/three@0.127.0/build/three.min.js" />
-      <main className="fixed top-0 left-0 w-screen h-screen overflow-hidden">
+      <main className="fixed left-0 top-0 h-screen w-screen overflow-hidden">
         <div
           id="wrapper"
-          className="wrapper w-full h-full relative overflow-hidden"
+          className="wrapper relative h-full w-full overflow-hidden"
         >
           <canvas id="canvas"></canvas>
         </div>
-          <div className={`fixed bottom-28 left-5 right-5 transition ${isFound ? "opacity-100" : "opacity-0"}`}>
-            <GetButton currentModel={foundMarker} />
-            <CopyrightText currentModel={foundMarker} />
-          </div>
+        <div
+          className={`fixed bottom-28 left-5 right-5 z-50 transition ${
+            isFound ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <GetButton currentModel={foundMarker} />
+          <CopyrightText currentModel={foundMarker} />
+        </div>
       </main>
     </Layout>
   );

@@ -26,3 +26,13 @@ export const updateUserGetStories = async (
     .update({ get_stories: storyIds })
     .eq("id", userId);
 };
+
+export const updateUserGetClues = async (
+  userId: string,
+  clueIds: string
+) => {
+  const { error } = await supabase
+    .from("users")
+    .update({ get_clues: clueIds })
+    .eq("id", userId);
+}

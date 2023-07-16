@@ -25,7 +25,7 @@ const ClueItem = (props: Props) => {
       onClick={handleClueDetail}
     >
       <div className="w-full relative">
-        <img src={`images/clues/${props.clue.id}.png`} className="p-4" alt="" />
+        <img src={`images/clues/${props.clue.id}.png`} className="p-4" alt="手がかり" />
         <div className="absolute bottom-0 right-0 left-0 panelGradientBack h-12 rounded-md grid place-items-center">
           <p className="tracking-widest text-center text-sm">
             {props.clue.name}
