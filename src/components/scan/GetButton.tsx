@@ -71,10 +71,10 @@ const GetButton = (props: Props) => {
       pathname: "/clue/" + currentModel.id,
       query: {
         id: router.query.id,
-        story: currentModel.id,
+        story: currentModel.storyId,
         title: currentModel.name,
-      }
-    })
+      },
+    });
   };
 
   return (
