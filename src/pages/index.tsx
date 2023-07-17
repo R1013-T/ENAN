@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Layout } from "@/components/Layout";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -10,17 +9,27 @@ import { useEffect, useState } from "react";
 import { BiLoader } from "react-icons/bi";
 import { useUserStore } from "@/libs/store";
 import { User } from "@/types/tableType";
+
 interface TopForm {
   name: string;
 }
 
 const Index = () => {
-  const user = useUserStore((state) => state.user);
   const updateUser = useUserStore((state) => state.updateUser);
 
   const router = useRouter();
+  const { id } = router.query;
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (id) {
+      router.push({
+        pathname: "/home",
+        query: { id: id },
+      });
+    }
+  }, [router.isReady]);
 
   // react-hook-form
   const {

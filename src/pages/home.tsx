@@ -24,7 +24,10 @@ const Dashboard = () => {
   const [gotClues, setGotClues] = useState<Clue[]>([]);
 
   useEffect(() => {
-    if (!id) return;
+    if (!id) {
+      alert("2階 202教室 で開催中です！");
+      router.push("/result/ranking");
+    }
 
     let user: User | undefined;
     let getPeopleIds: string[] = [];
@@ -91,7 +94,7 @@ const Dashboard = () => {
           await getClues(getClueIds).then((res: Clue[] | undefined) => {
             if (!res) return;
             cluesData = res;
-            updateStoreClues(res)
+            updateStoreClues(res);
           });
         }
 
@@ -103,7 +106,6 @@ const Dashboard = () => {
             }
           });
         });
-        
       }
 
       setGotPeople(getPeopleInfo);
@@ -113,7 +115,7 @@ const Dashboard = () => {
 
   return (
     <Layout headerType="sub" title="ホーム">
-      <div className="w-full h-screen overflow-y-scroll">
+      <div className="h-screen w-full overflow-y-scroll">
         {gotPeople[0] ? <People gotPeople={gotPeople} /> : ""}
         {gotClues[0] ? <Clues gotClues={gotClues} /> : ""}
       </div>

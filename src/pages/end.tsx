@@ -32,6 +32,10 @@ const End = () => {
 
   useEffect(() => {
     if (!router.isReady) return;
+    if (!id) {
+      alert("2階 202教室 で開催中です！");
+      router.push("/result/ranking");
+    }
 
     init();
   }, [router.isReady]);
@@ -99,7 +103,7 @@ const End = () => {
       <div className="h-screen overflow-y-scroll pb-28">
         <Title title="犯人決定" />
         <Frame>
-          <p className="mt-4 w-full text-center racking-widest text-theme-black text-xs leading-5 ">
+          <p className="racking-widest mt-4 w-full text-center text-xs leading-5 text-theme-black ">
             犯人だと思う人を選んでください
           </p>
           {gotPeople.map((person: Person) => (
@@ -111,14 +115,14 @@ const End = () => {
           ))}
           <Panel>
             <div
-              className="w-full h-27 overflow-hidden flex justify-between"
+              className="h-27 flex w-full justify-between overflow-hidden"
               onClick={() => changeDecisionPerson("none")}
             >
               <div className="w-13"></div>
               <div className="grid place-items-center text-center">
                 <p>この中に犯人は居ない</p>
               </div>
-              <div className="w-13 flex items-center justify-end py-4 px-3">
+              <div className="w-13 flex items-center justify-end px-3 py-4">
                 <VscArrowRight size={30} />
               </div>
             </div>
