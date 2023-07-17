@@ -4,8 +4,7 @@ export const fetchRanking = async () => {
   const { data, error } = await supabase
     .from("play_times")
     .select("*")
-    .order("started_at")
-    .limit(10);
+    .order("started_at");
   if (error) throw error;
   return data;
 };
