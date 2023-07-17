@@ -58,7 +58,12 @@ const GetButton = (props: Props) => {
       console.log("get_cluesに存在しない");
       // 存在しない場合
 
-      const newGetClues = user?.get_clues + "," + currentModel.id;
+      let newGetClues;
+      if (!getClueIds) {
+        newGetClues = currentModel.id.toString();
+      } else {
+        newGetClues = user?.get_clues + "," + currentModel.id;
+      }
 
       // Supabaseのuserテーブルのget_cluesにprops.currentModelのidを追加
       await updateUserGetClues(user?.id as string, newGetClues);
