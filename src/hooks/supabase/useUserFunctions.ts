@@ -1,6 +1,4 @@
-import { useUserStore } from "@/libs/store";
-import { supabase } from "@/libs/supabase";
-import { User } from "@/types/tableType";
+import {supabase} from "@/libs/supabase";
 
 // const user = useUserStore((state) => state.user)
 
@@ -36,3 +34,13 @@ export const updateUserGetClues = async (
     .update({ get_clues: clueIds })
     .eq("id", userId);
 }
+
+export const updateUserGetPeople = async (
+  userId: string,
+  peopleIds: string
+) => {
+  const { error } = await supabase
+    .from("users")
+    .update({ get_people: peopleIds })
+    .eq("id", userId);
+};
