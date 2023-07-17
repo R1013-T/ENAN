@@ -106,8 +106,13 @@ const Ranking = () => {
   }, []);
 
   useEffect(() => {
-    // finished_at - started_at でソート
-    const sortedUsers = users.sort((a, b) => {
+    let sortedUsers: RankingProps[] = [];
+    // finished_at が null のユーザーを除外する
+    sortedUsers = users.filter((user) => user.finished_at !== null);
+
+    // finished_at から started_at を引いた時間でソートする
+
+    sortedUsers = sortedUsers.sort((a, b) => {
       const aTime =
         new Date(a.finished_at).getTime() - new Date(a.started_at).getTime();
       const bTime =
