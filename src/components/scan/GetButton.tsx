@@ -1,6 +1,10 @@
 import React from "react";
 import { useUserStore } from "@/libs/store";
-import { getUser, updateUserGetClues } from "@/hooks/supabase/useUserFunctions";
+import {
+  getUser,
+  updateUserGetClues,
+  updateUserGetPeople,
+} from "@/hooks/supabase/useUserFunctions";
 import { User } from "@/types/tableType";
 import { useRouter } from "next/router";
 
@@ -58,12 +62,19 @@ const GetButton = (props: Props) => {
 
       // Supabaseのuserテーブルのget_cluesにprops.currentModelのidを追加
       await updateUserGetClues(user?.id as string, newGetClues);
+
+      // イヤリングの場合はget_peopleに1,2,3を追加
+      if (currentModel.id === 7) {
+        await updateUserGetPeople(user?.id as string, "1,2,3");
+      }
+
       // storeのuser情報を更新
       await getUser(router.query.id as string).then((res) => {
         if (!res.data) return;
         updateStoreUser(res.data[0] as User);
         user = res.data[0] as User;
       });
+
     }
 
     // 画面遷移
