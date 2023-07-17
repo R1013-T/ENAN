@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Script from "next/script";
 import { useEffect, useState } from "react";
 
@@ -38,6 +37,11 @@ const Scan = () => {
   });
 
   useEffect(() => {
+    if (!id) {
+      alert("2階 202教室 で開催中です！");
+      router.push("/result/ranking");
+    }
+
     if (
       markerRoots &&
       arToolkitSource &&

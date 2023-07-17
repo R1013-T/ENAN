@@ -1,11 +1,10 @@
 import { Layout } from "@/components/Layout";
 import Title from "@/components/panel/Title";
-import UnderButton from "@/components/underButton/UnderButton";
 import { useEffect, useState } from "react";
 import Chart from "chart.js/auto";
 import { Frame } from "@/components/panel/downShadowFrame";
 import { useUserStore } from "@/libs/store";
-import { Clue, Person, User } from "@/types/tableType";
+import { User } from "@/types/tableType";
 import { useRouter } from "next/router";
 import { getUser } from "@/hooks/supabase/useUserFunctions";
 
@@ -24,7 +23,12 @@ const Hints = () => {
   let getClueIds: string[] = [];
 
   useEffect(() => {
-    if (!id) return;
+    if (!router.isReady) return;
+    if (!id) {
+      alert("2階 202教室 で開催中です！");
+      router.push("/result/ranking");
+    }
+
     init();
   }, [router.isReady]);
 
@@ -122,15 +126,15 @@ const Hints = () => {
 
   return (
     <Layout headerType="sub" title="進捗">
-      <div className="h-screen overflow-y-scroll pb-28 w-full">
+      <div className="h-screen w-full overflow-y-scroll pb-28">
         <Title title="進捗" />
         <Frame>
-          <div className="my-4 w-full text-center racking-widest text-theme-black text-xs">
-            <p className="text-sm mb-2 text-white">容疑者と話す</p>
+          <div className="racking-widest my-4 w-full text-center text-xs text-theme-black">
+            <p className="mb-2 text-sm text-white">容疑者と話す</p>
             <p>容疑者と話し、事件を推理しよう。</p>
           </div>
-          <div className="w-10/12 mx-auto mb-5 p-3 relative">
-            <p className="absolute top-1/2 right-1/2 translate-x-1/2 -translate-y-4 text-3xl tracking-widest">
+          <div className="relative mx-auto mb-5 w-10/12 p-3">
+            <p className="absolute right-1/2 top-1/2 -translate-y-4 translate-x-1/2 text-3xl tracking-widest">
               {gotPeopleNum}
               <span className="text-base">/3</span>
               <span className="text-xs">人</span>
@@ -139,12 +143,12 @@ const Hints = () => {
           </div>
         </Frame>
         <Frame>
-          <div className="my-4 w-full text-center racking-widest text-theme-black text-xs">
-            <p className="text-sm mb-2 text-white">手がかりを見つける</p>
+          <div className="racking-widest my-4 w-full text-center text-xs text-theme-black">
+            <p className="mb-2 text-sm text-white">手がかりを見つける</p>
             <p>マーカーをスキャンし、手がかりを見つけよう。</p>
           </div>
-          <div className="w-10/12 mx-auto mb-5 p-3 relative">
-            <p className="absolute top-1/2 right-1/2 translate-x-1/2 -translate-y-4 text-3xl tracking-widest">
+          <div className="relative mx-auto mb-5 w-10/12 p-3">
+            <p className="absolute right-1/2 top-1/2 -translate-y-4 translate-x-1/2 text-3xl tracking-widest">
               {gotClueNum}
               <span className="text-base">/7</span>
               <span className="text-xs">個</span>
