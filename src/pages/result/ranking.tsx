@@ -165,10 +165,18 @@ const Ranking = () => {
       <div className="h-screen w-full overflow-y-scroll">
         <Title title="ランキング" />
         <div className="pt-3">
-          {users.map((user, index) => (
+          {sortedUsers.map((user, index) => (
             <RankingItem key={user.id} index={index} user={user} />
           ))}
         </div>
+        <button
+          onClick={() => {
+            const currentDateTime = new Date().toISOString().slice(0, 19);
+            console.log(currentDateTime);
+          }}
+        >
+          date
+        </button>
       </div>
     </Layout>
   );
