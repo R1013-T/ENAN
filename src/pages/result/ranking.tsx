@@ -3,6 +3,7 @@ import Title from "@/components/panel/Title";
 import { useEffect, useState } from "react";
 import { fetchRanking } from "@/hooks/supabase/useRankingFunctions";
 import { supabase } from "@/libs/supabase";
+import { useRouter } from "next/router";
 
 export type RankingProps = {
   id: string;
@@ -42,7 +43,7 @@ const RankingItem = ({ index, user }: RankingItemProps) => {
 
   if (rank == 1) {
     return (
-      <div className="rank-first mx-6 mb-7 flex flex-wrap items-center justify-between text-2xl font-bold tabular-nums">
+      <div className="rank-first mx-2 mb-7 flex flex-wrap items-center justify-between text-2xl font-bold tabular-nums">
         <div className="flex items-center">
           <div className="w-6 text-right">
             1<span className="text-base">st</span>
@@ -56,7 +57,7 @@ const RankingItem = ({ index, user }: RankingItemProps) => {
 
   if (rank == 2) {
     return (
-      <div className="rank-second mx-6 mb-7 flex flex-wrap items-center justify-between text-xl font-bold tabular-nums">
+      <div className="rank-second mx-2 mb-7 flex flex-wrap items-center justify-between text-xl font-bold tabular-nums">
         <div className="flex items-center">
           <div className="w-6 text-right">
             2<span className="text-base">nd</span>
@@ -70,7 +71,7 @@ const RankingItem = ({ index, user }: RankingItemProps) => {
 
   if (rank == 3) {
     return (
-      <div className="rank-third mx-6 mb-7 flex flex-wrap items-center justify-between text-lg font-bold tabular-nums">
+      <div className="rank-third mx-2 mb-7 flex flex-wrap items-center justify-between text-lg font-bold tabular-nums">
         <div className="flex items-center">
           <div className="w-6 text-right">
             3<span className="text-base">rd</span>
@@ -83,7 +84,7 @@ const RankingItem = ({ index, user }: RankingItemProps) => {
   }
 
   return (
-    <div className="mb-3 ml-4 mr-6 flex flex-wrap items-center justify-between text-base tabular-nums">
+    <div className="mb-3 mr-2 flex flex-wrap items-center justify-between text-base tabular-nums">
       <div className="flex items-center">
         <div className="w-6 text-right font-bold">{rank}</div>
         <div className="ml-10">{user.user_name}</div>
@@ -94,6 +95,9 @@ const RankingItem = ({ index, user }: RankingItemProps) => {
 };
 
 const Ranking = () => {
+  const router = useRouter();
+  const { id } = router.query;
+
   const [users, setUsers] = useState<RankingProps[]>([]);
   const [sortedUsers, setSortedUsers] = useState<RankingProps[]>([]);
 
@@ -173,7 +177,14 @@ const Ranking = () => {
         <Title title="ランキング" />
         <div className="pt-3">
           {sortedUsers.map((user, index) => (
-            <RankingItem key={user.id} index={index} user={user} />
+            <div
+              key={user.id}
+              className={`mx-5 ${
+                user.user_id === id && "rounded-xl bg-theme-red/60"
+              }`}
+            >
+              <RankingItem index={index} user={user} />
+            </div>
           ))}
         </div>
       </div>

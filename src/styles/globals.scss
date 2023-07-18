@@ -142,6 +142,10 @@ canvas {
   animation: gradient 7s infinite cubic-bezier(0.62, 0.28, 0.23, 0.99) both;
 }
 
+.current_user {
+  background: #ED1643;
+}
+
 @keyframes scanIconActive {
   0% {
     opacity: 0.6;
