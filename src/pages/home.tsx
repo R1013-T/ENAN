@@ -24,11 +24,14 @@ const Dashboard = () => {
   const [gotClues, setGotClues] = useState<Clue[]>([]);
 
   useEffect(() => {
+    if (!router.isReady) return;
     if (!id) {
       alert("2階 202教室 で開催中です！");
       router.push("/result/ranking");
     }
+  }, [router.isReady]);
 
+  useEffect(() => {
     let user: User | undefined;
     let getPeopleIds: string[] = [];
     let getPeopleInfo: Person[] = [];

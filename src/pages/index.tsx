@@ -9,6 +9,8 @@ import { useEffect, useState } from "react";
 import { BiLoader } from "react-icons/bi";
 import { useUserStore } from "@/libs/store";
 import { User } from "@/types/tableType";
+import { createPlayTime } from "@/hooks/supabase/usePlayTimeFunctions";
+import { RankingProps } from "@/pages/result/ranking";
 
 interface TopForm {
   name: string;
@@ -51,6 +53,21 @@ const Index = () => {
     await createUser(id, data.name)
       .then((res) => {
         if (!res.data) return;
+
+        const currentDateTime = new Date().toISOString().slice(0, 19);
+
+        const params: RankingProps = {
+          id: res.data[0].id.toString(),
+          started_at: currentDateTime,
+          finished_at: null,
+          user_id: res.data[0].id.toString(),
+          user_name: res.data[0].name.toString(),
+        };
+
+        // async 即時関数
+        (async () => {
+          await createPlayTime(params);
+        })();
 
         setIsLoading(false);
 

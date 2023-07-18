@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import { fetchRanking } from "@/hooks/supabase/useRankingFunctions";
 import { supabase } from "@/libs/supabase";
 
-type RankingProps = {
-  id: number;
+export type RankingProps = {
+  id: string;
   started_at: string;
-  finished_at: string;
+  finished_at: string | null;
   user_id: string;
   user_name: string;
 };
@@ -25,7 +25,7 @@ const RankingItem = ({ index, user }: RankingItemProps) => {
 
   useEffect(() => {
     const startedTime = new Date(started_at);
-    const finishedTime = new Date(finished_at);
+    const finishedTime = new Date(finished_at as string);
     const diffInMs: number = finishedTime.getTime() - startedTime.getTime();
 
     // 時間の差を計算し、h/mm/ss 形式に整形する
@@ -114,9 +114,11 @@ const Ranking = () => {
 
     sortedUsers = sortedUsers.sort((a, b) => {
       const aTime =
-        new Date(a.finished_at).getTime() - new Date(a.started_at).getTime();
+        new Date(a.finished_at as string).getTime() -
+        new Date(a.started_at).getTime();
       const bTime =
-        new Date(b.finished_at).getTime() - new Date(b.started_at).getTime();
+        new Date(b.finished_at as string).getTime() -
+        new Date(b.started_at).getTime();
       return aTime - bTime;
     });
     setSortedUsers(sortedUsers);
@@ -174,14 +176,6 @@ const Ranking = () => {
             <RankingItem key={user.id} index={index} user={user} />
           ))}
         </div>
-        <button
-          onClick={() => {
-            const currentDateTime = new Date().toISOString().slice(0, 19);
-            console.log(currentDateTime);
-          }}
-        >
-          date
-        </button>
       </div>
     </Layout>
   );

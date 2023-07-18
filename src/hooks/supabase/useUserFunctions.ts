@@ -1,6 +1,4 @@
-import {supabase} from "@/libs/supabase";
-
-// const user = useUserStore((state) => state.user)
+import { supabase } from "@/libs/supabase";
 
 export const createUser = async (id: string, name: string) => {
   // ユーザーをSPに登録
@@ -42,5 +40,15 @@ export const updateUserGetPeople = async (
   const { error } = await supabase
     .from("users")
     .update({ get_people: peopleIds })
+    .eq("id", userId);
+};
+
+export const updateUserFinishedAt = async (
+  userId: string,
+  finishedAt: string
+) => {
+  const { error } = await supabase
+    .from("users")
+    .update({ finished_at: finishedAt })
     .eq("id", userId);
 };

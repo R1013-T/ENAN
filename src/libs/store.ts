@@ -21,6 +21,11 @@ interface CluesState {
   updateClues: (payload: Clue[]) => void;
 }
 
+interface IsFinishedState {
+  isFinished: boolean;
+  updateIsFinished: (payload: boolean) => void;
+}
+
 export const useUserStore = create<userState>((set) => ({
   user: {
     id: "",
@@ -58,6 +63,15 @@ export const useCluesStore = create<CluesState>((set) => ({
   updateClues(payload) {
     set({
       clues: payload,
+    });
+  },
+}));
+
+export const useIsFinishedStore = create<IsFinishedState>((set) => ({
+  isFinished: false,
+  updateIsFinished(payload: boolean) {
+    set({
+      isFinished: payload,
     });
   },
 }));
