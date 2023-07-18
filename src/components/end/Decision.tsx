@@ -1,9 +1,11 @@
 import { VscArrowLeft } from "react-icons/vsc";
-import Title from "../panel/Title";
 import { Frame } from "../panel/downShadowFrame";
 import { Person } from "@/types/tableType";
 import { Panel } from "../panel/boxShadowPanel";
 import { useRouter } from "next/router";
+import { useIsFinishedStore, useUserStore } from "@/libs/store";
+import { updatePlayTime } from "@/hooks/supabase/usePlayTimeFunctions";
+import { updateUserFinishedAt } from "@/hooks/supabase/useUserFunctions";
 
 interface Props {
   person: Person | string;
@@ -11,10 +13,26 @@ interface Props {
 }
 
 const Decision = (props: Props) => {
+  const user = useUserStore((state) => state.user);
+  const isFinished = useIsFinishedStore((state) => state);
   const router = useRouter();
 
-  const handleEnd = () => {
+  const handleEnd = async () => {
     if (typeof props.person === "string") {
+      if (!isFinished.isFinished) {
+        if (user.finished_at) {
+          isFinished.updateIsFinished(true);
+        } else {
+          // play_timesに追加
+          await updateUserFinishedAt(
+            user.id,
+            new Date().toISOString().slice(0, 19)
+          );
+          await updatePlayTime(user.id, new Date().toISOString().slice(0, 19));
+          isFinished.updateIsFinished(true);
+        }
+      }
+
       router.push({
         pathname: "/result",
         query: { id: router.query.id },
