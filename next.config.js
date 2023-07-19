@@ -3,7 +3,6 @@ const nextConfig = {
   reactStrictMode: false,
   experimental: {
     appDir: false,
-    optimizeFonts: true,
   },
 };
 
