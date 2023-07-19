@@ -2,6 +2,7 @@ import { Panel } from "@/components/panel/boxShadowPanel";
 import { Person } from "@/types/tableType";
 import { useRouter } from "next/router";
 import { VscArrowRight } from "react-icons/vsc";
+import { useSounds } from "@/hooks/useSounds";
 
 interface Props {
   person: Person;
@@ -9,8 +10,10 @@ interface Props {
 
 const PersonItem = (props: Props) => {
   const router = useRouter();
+  const { person_detail } = useSounds();
 
   const handlePersonDetail = () => {
+    person_detail();
     router.push({
       pathname: "/people/" + props.person.id,
       query: {

@@ -1,5 +1,6 @@
 import { Clue } from "@/types/tableType";
 import { useRouter } from "next/router";
+import { useSounds } from "@/hooks/useSounds";
 
 interface Props {
   clue: Clue;
@@ -7,8 +8,10 @@ interface Props {
 
 const ClueItem = (props: Props) => {
   const router = useRouter();
+  const { clue_detail } = useSounds();
 
   const handleClueDetail = () => {
+    clue_detail();
     router.push({
       pathname: "/clue/" + props.clue.id,
       query: {

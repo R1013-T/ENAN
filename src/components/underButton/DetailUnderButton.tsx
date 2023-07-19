@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { VscArrowLeft } from "react-icons/vsc";
+import { useSounds } from "@/hooks/useSounds";
 
 interface Props {
   buttonText: string;
@@ -23,6 +24,8 @@ const DetailUnderButton = (props: Props) => {
   const updateStoreGetStories = useGetStoriesStore(
     (state) => state.updateGetStories
   );
+
+  const { playClick, storyStart } = useSounds();
 
   const handlePlayStory = async () => {
     let currentStoryIds = props.storyId?.split(",");
@@ -83,13 +86,19 @@ const DetailUnderButton = (props: Props) => {
     <div className="absolute bottom-6 left-6 right-6">
       <button
         className="boxShadow block w-full rounded bg-theme-red py-2.5 text-center text-lg tracking-widest"
-        onClick={handlePlayStory}
+        onClick={() => {
+          handlePlayStory();
+          storyStart();
+        }}
       >
         {props.buttonText}
       </button>
       <Link
         href={{ pathname: "/home", query: { id: router.query.id } }}
         className="boxShadow mt-3 flex w-full items-center justify-center rounded bg-theme-black py-2.5 text-lg tracking-widest"
+        onClick={() => {
+          playClick();
+        }}
       >
         <div className="grid h-6 w-6 place-items-center">
           <VscArrowLeft size={20} />

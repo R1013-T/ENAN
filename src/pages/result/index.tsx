@@ -1,49 +1,13 @@
 import { Layout } from "@/components/Layout";
 import Title from "@/components/panel/Title";
-import confetti from "canvas-confetti";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
-import { GrTechnology } from "react-icons/gr";
 import { FaUsers } from "react-icons/fa";
+import { useSounds } from "@/hooks/useSounds";
 
 const Result = () => {
   const router = useRouter();
-
-  useEffect(() => {
-    function randomInRange(min: number, max: number) {
-      return Math.random() * (max - min) + min;
-    }
-
-    let i = 0;
-    const playConfetti = setInterval(function () {
-      i += 1;
-      if (i > 7) clearInterval(playConfetti);
-      if (window.location.pathname === "/result") {
-        confetti({
-          angle: randomInRange(55, 125),
-          spread: randomInRange(50, 70),
-          particleCount: randomInRange(50, 100),
-          origin: { y: 0.6 },
-        });
-      } else {
-        clearInterval(playConfetti);
-      }
-    }, 100);
-
-    const playConfettiInfinite = setInterval(function () {
-      if (window.location.pathname === "/result") {
-        confetti({
-          angle: randomInRange(55, 125),
-          spread: randomInRange(50, 70),
-          particleCount: randomInRange(50, 100),
-          origin: { y: 0.6 },
-        });
-      } else {
-        clearInterval(playConfettiInfinite);
-      }
-    }, 1000);
-  }, []);
+  const { playClick, storyStart } = useSounds();
 
   return (
     <Layout headerType="sub" title="結果" hideUnderButton={true}>
@@ -68,6 +32,9 @@ const Result = () => {
               query: { id: router.query.id, story: "" },
             }}
             className="boxShadow mb-5 flex w-full items-center justify-center rounded bg-theme-red py-2.5 text-lg tracking-widest text-white"
+            onClick={() => {
+              storyStart();
+            }}
           >
             <p className="px-3">最終ストーリーを見る</p>
           </Link>
@@ -77,24 +44,14 @@ const Result = () => {
               query: { id: router.query.id, story: "" },
             }}
             className="boxShadow mt-3 flex w-full items-center justify-center rounded bg-theme-black py-2.5 text-lg tracking-widest text-black"
+            onClick={() => {
+              playClick();
+            }}
           >
             <div className="grid h-6 w-6 place-items-center">
               <FaUsers size={20} />
             </div>
             <p className="px-3">ランキング</p>
-            <div className="w-6"></div>
-          </Link>
-          <Link
-            href={{
-              pathname: "/result/technology",
-              query: { id: router.query.id, story: "" },
-            }}
-            className="boxShadow mt-3 flex w-full items-center justify-center rounded bg-theme-black py-2.5 text-lg tracking-widest text-black"
-          >
-            <div className="grid h-6 w-6 place-items-center">
-              <GrTechnology size={20} />
-            </div>
-            <p className="px-3">使用技術</p>
             <div className="w-6"></div>
           </Link>
         </div>

@@ -7,6 +7,7 @@ import {
 } from "@/hooks/supabase/useUserFunctions";
 import { User } from "@/types/tableType";
 import { useRouter } from "next/router";
+import { useSounds } from "@/hooks/useSounds";
 
 type Props = {
   currentModel: string;
@@ -34,6 +35,7 @@ const ClUES = {
 const GetButton = (props: Props) => {
   const router = useRouter();
   const updateStoreUser = useUserStore((state) => state.updateUser);
+  const { clue_detail } = useSounds();
 
   const handleGetClue = async () => {
     let user: User | undefined;
@@ -46,16 +48,12 @@ const GetButton = (props: Props) => {
       updateStoreUser(res.data[0] as User);
     });
 
-    console.log("user:", user);
-
     // userのget_cluesにprops.currentModelが既に存在するか確認
     const currentModel = ClUES[props.currentModel as ModelKeys ];
     const getClueIds = user?.get_clues?.split(",") as string[];
 
     if (getClueIds && getClueIds.includes(currentModel.id.toString())) {
-      console.log("get_cluesに存在する");
     } else {
-      console.log("get_cluesに存在しない");
       // 存在しない場合
 
       let newGetClues;
@@ -79,9 +77,9 @@ const GetButton = (props: Props) => {
         updateStoreUser(res.data[0] as User);
         user = res.data[0] as User;
       });
-
     }
 
+    clue_detail();
     // 画面遷移
     router.push({
       pathname: "/clue/" + currentModel.id,

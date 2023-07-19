@@ -3,6 +3,7 @@ import { Story } from "@/types/tableType";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { VscArrowRight } from "react-icons/vsc";
+import { useSounds } from "@/hooks/useSounds";
 
 interface Props {
   story: Story;
@@ -18,6 +19,7 @@ interface StoryTitleId {
 const Item = (props: Props) => {
   const router = useRouter();
   const storyItemRef = useRef<any>(null);
+  const { storyStart } = useSounds();
 
   const [person_id, setPersonId] = useState<number>(0);
 
@@ -25,6 +27,8 @@ const Item = (props: Props) => {
     let storyId = storyItemRef.current.id;
     const idArray = storyId.split(",");
     storyId = `${idArray[0]},${idArray[idArray.length - 1]}`;
+
+    storyStart();
 
     router.push({
       pathname: "/story",

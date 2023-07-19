@@ -11,12 +11,15 @@ import { Person, User } from "@/types/tableType";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { VscArrowRight } from "react-icons/vsc";
+import { useSounds } from "@/hooks/useSounds";
 
 const End = () => {
   const storeUser = useUserStore((state) => state.user);
   const updateStoreUser = useUserStore((state) => state.updateUser);
   const storePeople = usePeopleStore((state) => state.people);
   const updateStorePeople = usePeopleStore((state) => state.updatePeople);
+
+  const { playClick } = useSounds();
 
   const router = useRouter();
   const { id } = router.query;
@@ -42,7 +45,6 @@ const End = () => {
 
   const init = async () => {
     if (!id) return;
-    console.log(id);
 
     let user: User | undefined;
     let getPeopleIds: string[] = [];
@@ -116,7 +118,10 @@ const End = () => {
           <Panel>
             <div
               className="h-27 flex w-full justify-between overflow-hidden"
-              onClick={() => changeDecisionPerson("none")}
+              onClick={() => {
+                changeDecisionPerson("none");
+                playClick();
+              }}
             >
               <div className="w-13"></div>
               <div className="grid place-items-center text-center">
