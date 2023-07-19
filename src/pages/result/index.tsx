@@ -36,10 +36,11 @@ const Result = () => {
               }}
               className="boxShadow mb-5 flex w-full items-center justify-center rounded bg-theme-red py-2.5 text-lg tracking-widest text-white"
               onClick={() => {
+                alert("まだ");
                 storyStart();
               }}
             >
-              <p className="px-3">最終ストーリーを見る</p>
+              <p className="px-3">事件の真相を見る</p>
             </Link>
             <Link
               href={{
