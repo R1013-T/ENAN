@@ -14,11 +14,11 @@ const Header = (props: Props) => {
       {props.headerType === "top" ? (
         <div className="absolute -bottom-7 right-1/2 flex translate-x-1/2 flex-wrap items-center justify-center">
           <Image
-            src="/images/webar_logo.svg"
+            src="/images/webar.svg"
             alt="WebAR推理ゲーム"
             width="250"
             height="200"
-            className="mb-8 w-full"
+            className="mb-10 w-full"
           />
           <Image
             src="/images/enan_icon.png"
@@ -30,7 +30,7 @@ const Header = (props: Props) => {
       ) : (
         <div className="fixed left-6 top-7 z-40">
           <Image
-            src="/images/webar_logo.svg"
+            src="/images/webar.svg"
             alt="WebAR推理ゲーム"
             width="100"
             height="130"
