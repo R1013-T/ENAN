@@ -1,9 +1,10 @@
 import { useRouter } from "next/router";
 import Item from "./Item";
-import { useEffect } from "react";
+import { useSounds } from "@/hooks/useSounds";
 
 const UnderButton = () => {
   const router = useRouter();
+  const { click_scan } = useSounds();
 
   const scanPage = () => {
     const params = {
@@ -11,14 +12,20 @@ const UnderButton = () => {
     };
     const urlSearchParam = new URLSearchParams(params).toString();
 
-    document.location.href = "/scan/?" + urlSearchParam;
+    click_scan();
+    setTimeout(() => {
+      document.location.href = "/scan/?" + urlSearchParam;
+    }, 300);
   };
 
   return (
-    <div className="fixed z-50 bottom-6 right-6 left-6 h-15 rounded-md p-2 flex items-center justify-around bg-theme-black/20 backdrop-blur-md boxShadow">
+    <div className="h-15 boxShadow fixed bottom-6 left-6 right-6 z-50 flex items-center justify-around rounded-md bg-theme-black/20 p-2 backdrop-blur-md">
       <Item name="home" />
       <Item name="story" />
-      <div className="bg-theme-red h-12 rounded-full p-1.5 -mx-3" onClick={scanPage}>
+      <div
+        className="-mx-3 h-12 rounded-full bg-theme-red p-1.5"
+        onClick={scanPage}
+      >
         <img
           src={`/images/underButton/scan${
             router.pathname === "/scan" ? "_active" : ""

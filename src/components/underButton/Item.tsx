@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useSounds } from "@/hooks/useSounds";
 
 interface Props {
   name: string;
@@ -7,13 +7,14 @@ interface Props {
 
 const Item = (props: Props) => {
   const router = useRouter();
-
+  const { playClick } = useSounds();
   const handleChangePage = () => {
+    playClick();
     router.push({ pathname: "/" + props.name, query: { id: router.query.id } });
   };
 
   return (
-    <div className="w-7 h-7 grid place-items-center" onClick={handleChangePage}>
+    <div className="grid h-7 w-7 place-items-center" onClick={handleChangePage}>
       <img
         src={`images/underButton/${props.name}${
           router.pathname === "/" + props.name ? "_fill" : ""

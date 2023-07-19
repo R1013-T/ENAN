@@ -11,6 +11,8 @@ import { useUserStore } from "@/libs/store";
 import { User } from "@/types/tableType";
 import { createPlayTime } from "@/hooks/supabase/usePlayTimeFunctions";
 import { RankingProps } from "@/pages/result/ranking";
+import Image from "next/image";
+import { useSounds } from "@/hooks/useSounds";
 
 interface TopForm {
   name: string;
@@ -19,12 +21,16 @@ interface TopForm {
 const Index = () => {
   const updateUser = useUserStore((state) => state.updateUser);
 
+  const { playStart, playClick, storyStart } = useSounds();
+
   const router = useRouter();
   const { id } = router.query;
 
+  const [isStart, setIsStart] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
+    if (!router.isReady) return;
     if (id) {
       router.push({
         pathname: "/home",
@@ -45,6 +51,7 @@ const Index = () => {
 
   const onSubmit = async (data: TopForm) => {
     if (errors.name || isLoading) return;
+    playClick();
 
     setIsLoading(true);
 
@@ -64,7 +71,6 @@ const Index = () => {
           user_name: res.data[0].name.toString(),
         };
 
-        // async 即時関数
         (async () => {
           await createPlayTime(params);
         })();
@@ -73,6 +79,7 @@ const Index = () => {
 
         updateUser(res.data[0] as User);
 
+        storyStart();
         router.push({
           pathname: "/story",
           query: { id: id, story: "1,4" },
@@ -85,6 +92,30 @@ const Index = () => {
 
   return (
     <Layout headerType="top" title="">
+      {!isStart && (
+        <div
+          className="fixed top-0 z-50 grid h-full w-full place-items-center bg-bg-black/80 backdrop-blur"
+          onClick={() => {
+            setIsStart(true);
+            playStart();
+          }}
+        >
+          <div className="rounded border border-theme-black/60 bg-bg-black/80 p-7">
+            <p className="text-center text-lg">タップしてスタート！</p>
+            <div className="mt-4 flex w-full items-center justify-center">
+              <Image
+                src={"/images/speaker.svg"}
+                alt={""}
+                width={30}
+                height={30}
+              />
+              <p className="ml-2 text-center text-xs text-theme-black">
+                効果音が再生されます
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="relative h-full">
         <form
           className="absolute bottom-0 w-full p-6"

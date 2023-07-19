@@ -34,7 +34,7 @@ const ClueDetail = () => {
         <img
           src={`/images/clues/${clueId}.png`}
           alt=""
-          className="absolute top-32 w-3/5 right-1/2 translate-x-1/2 object-cover"
+          className="absolute right-1/2 top-32 w-3/5 translate-x-1/2 object-cover"
         />
       ) : (
         ""

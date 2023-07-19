@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Back from "./Back";
 import Talk from "./Talk";
+import { useSounds } from "@/hooks/useSounds";
 
 interface Props {
   person_id: number;
@@ -13,9 +14,12 @@ interface Props {
 const Play = (props: Props) => {
   const [next, setNext] = useState(false);
 
+  const { playClick } = useSounds();
+
   const nextStory = () => {
     // フェードアウトしてから次のストーリーをセットする。
     setNext(true);
+    playClick();
 
     setTimeout(() => {
       props.nextStory();

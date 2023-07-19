@@ -1,18 +1,15 @@
 import Script from "next/script";
 import { useEffect, useState } from "react";
-
 import useMarkerAr from "@/hooks/ar/useMarkerAr";
-
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { useRouter } from "next/router";
 import { Layout } from "@/components/Layout";
 import GetButton from "@/components/scan/GetButton";
 import CopyrightText from "@/components/scan/CopyrightText";
+import { useSounds } from "@/hooks/useSounds";
 
 const Scan = () => {
-  const router = useRouter();
-  const { id } = router.query;
+  const { scanning, clue_detail } = useSounds();
 
   const markers = [
     "lock",
@@ -25,6 +22,7 @@ const Scan = () => {
   ];
   const [foundMarker, setFoundMarker] = useState("");
   const [isFound, setIsFound] = useState(false);
+  const [isStart, setIsStart] = useState(false);
 
   const {
     markerRoots,
@@ -37,11 +35,6 @@ const Scan = () => {
   });
 
   useEffect(() => {
-    if (!id) {
-      alert("2階 202教室 で開催中です！");
-      router.push("/result/ranking");
-    }
-
     if (
       markerRoots &&
       arToolkitSource &&
@@ -181,13 +174,12 @@ const Scan = () => {
   useEffect(() => {
     switch (foundMarker) {
       case "lost":
-        console.log(`lost`);
         setIsFound(false);
         break;
       case "":
         break;
       default:
-        console.log(`${foundMarker} found`);
+        scanning();
         setIsFound(true);
         break;
     }
@@ -195,6 +187,19 @@ const Scan = () => {
 
   return (
     <Layout headerType="sub" title="AR">
+      {!isStart && (
+        <div
+          className="fixed top-0 z-50 grid h-full w-full place-items-center bg-bg-black/80 backdrop-blur"
+          onClick={() => {
+            setIsStart(true);
+            scanning();
+          }}
+        >
+          <div className="rounded border border-theme-black/60 bg-bg-black/80 p-7">
+            <p className="text-center text-base">タップして スキャンスタート</p>
+          </div>
+        </div>
+      )}
       <Script src="https://unpkg.com/three@0.127.0/build/three.min.js" />
       <main className="fixed left-0 top-0 h-screen w-screen overflow-hidden">
         <div
@@ -204,7 +209,7 @@ const Scan = () => {
           <canvas id="canvas"></canvas>
         </div>
         <div
-          className={`fixed bottom-28 left-5 right-5 z-50 transition ${
+          className={`fixed bottom-28 left-5 right-5 z-40 transition ${
             isFound ? "opacity-100" : "opacity-0"
           }`}
         >
