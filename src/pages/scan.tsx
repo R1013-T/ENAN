@@ -189,7 +189,7 @@ const Scan = () => {
     <Layout headerType="sub" title="AR">
       {!isStart && (
         <div
-          className="fixed top-0 z-50 grid h-full w-full place-items-center bg-bg-black/80 backdrop-blur"
+          className="fixed left-0 top-0 z-50 grid h-full w-full place-items-center bg-bg-black/80 backdrop-blur"
           onClick={() => {
             setIsStart(true);
             scanning();

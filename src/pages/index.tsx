@@ -11,7 +11,6 @@ import { useUserStore } from "@/libs/store";
 import { User } from "@/types/tableType";
 import { createPlayTime } from "@/hooks/supabase/usePlayTimeFunctions";
 import { RankingProps } from "@/pages/result/ranking";
-import Image from "next/image";
 import { useSounds } from "@/hooks/useSounds";
 
 interface TopForm {
@@ -94,25 +93,14 @@ const Index = () => {
     <Layout headerType="top" title="">
       {!isStart && (
         <div
-          className="fixed top-0 z-50 grid h-full w-full place-items-center bg-bg-black/80 backdrop-blur"
+          className="fixed left-0 top-0 z-50 grid h-screen w-screen place-items-center bg-bg-black/80 backdrop-blur"
           onClick={() => {
             setIsStart(true);
             playStart();
           }}
         >
           <div className="rounded border border-theme-black/60 bg-bg-black/80 p-7">
-            <p className="text-center text-lg">タップしてスタート！</p>
-            <div className="mt-4 flex w-full items-center justify-center">
-              <Image
-                src={"/images/speaker.svg"}
-                alt={""}
-                width={30}
-                height={30}
-              />
-              <p className="ml-2 text-center text-xs text-theme-black">
-                効果音が再生されます
-              </p>
-            </div>
+            <p className="text-center text-base">タップしてスタート！</p>
           </div>
         </div>
       )}

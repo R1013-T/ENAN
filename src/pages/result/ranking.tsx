@@ -172,7 +172,7 @@ const Ranking = () => {
   };
 
   return (
-    <Layout headerType="sub" title="ホーム" hideUnderButton={true}>
+    <Layout headerType="sub" title="ランキング" hideUnderButton={true}>
       <div className="h-screen w-full overflow-y-scroll">
         <Title title="ランキング" />
         <div className="pt-3">
