@@ -24,12 +24,12 @@ const creatorItems: Creator[] = [
   {
     name: "矢板橋 翔",
     role: "Preparation",
-    image: "",
+    image: "kake",
   },
   {
     name: "高橋 健太",
     role: "Preparation",
-    image: "",
+    image: "kenta",
   },
 ];
 
