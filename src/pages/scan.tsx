@@ -119,7 +119,7 @@ const Scan = () => {
           case "chair":
             model.scale.set(3, 3, 3);
             model.position.set(0, 0, 0);
-            model.rotation.set(-Math.PI / 2, 0, 0);
+            model.rotation.set(0, Math.PI, 0);
             break;
 
           case "controller":
@@ -147,7 +147,7 @@ const Scan = () => {
             break;
 
           case "document":
-            model.scale.set(30, 30, 30);
+            model.scale.set(10, 10, 10);
             model.position.set(0, 0, 0);
             model.rotation.set(0, 0, 0);
             break;

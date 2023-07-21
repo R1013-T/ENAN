@@ -56,8 +56,27 @@ const Hints = () => {
     getPeopleIds = user?.get_people?.split(",") as string[];
     getClueIds = user?.get_clues?.split(",") as string[];
 
-    if (getPeopleIds) setGotPeopleNum(getPeopleIds.length);
+    const getTokedNum = getClueStoriesNum();
+
+    if (getPeopleIds) setGotPeopleNum(getTokedNum);
     if (getClueIds) setGotClueNum(getClueIds.length);
+  };
+
+  const getClueStoriesNum = () => {
+    const stories = user?.get_stories?.split(",") as string[];
+    let getTokedNum = 0;
+
+    if (stories.includes("11")) {
+      getTokedNum++;
+    }
+    if (stories.includes("13")) {
+      getTokedNum++;
+    }
+    if (stories.includes("15")) {
+      getTokedNum++;
+    }
+
+    return getTokedNum;
   };
 
   useEffect(() => {
