@@ -7,7 +7,8 @@ type ModelKeys =
   | "controller"
   | "earrings"
   | "knife"
-  | "water";
+  | "water"
+  | "document";
 
 type Props = {
   currentModel: string;
@@ -26,6 +27,8 @@ const COPYRIGHT_TEXTS: Record<ModelKeys, string> = {
     "Kitchen Knife (https://skfb.ly/6WZ9N) by calp1 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
   water:
     "Every drop you splash! (https://www.cgtrader.com/free-3d-models/various/various-models/cc0-drops)",
+  document:
+    "Document Clipboard with Pen (https://skfb.ly/oIqts) by Kami Rapacz is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
 };
 
 const CopyrightText = (props: Props) => {
