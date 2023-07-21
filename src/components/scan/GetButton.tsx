@@ -20,7 +20,8 @@ type ModelKeys =
   | "controller"
   | "earrings"
   | "knife"
-  | "water";
+  | "water"
+  | "document";
 
 const ClUES = {
   lock: { id: 1, name: "玄関の鍵", storyId: "22,23" },
@@ -30,6 +31,7 @@ const ClUES = {
   dent: { id: 5, name: "へこんだ床", storyId: "31" },
   chair: { id: 6, name: "椅子", storyId: "32" },
   earrings: { id: 7, name: "イヤリング", storyId: "33,41" },
+  document: { id: 8, name: "被害者の情報", storyId: "61,68" },
 };
 
 const GetButton = (props: Props) => {

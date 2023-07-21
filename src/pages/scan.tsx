@@ -19,6 +19,7 @@ const Scan = () => {
     "earrings",
     "knife",
     "water",
+    "document",
   ];
   const [foundMarker, setFoundMarker] = useState("");
   const [isFound, setIsFound] = useState(false);
@@ -143,6 +144,12 @@ const Scan = () => {
             model.scale.set(30, 30, 30);
             model.position.set(0, 0, 0);
             model.rotation.set(-Math.PI / 2, 0, 0);
+            break;
+
+          case "document":
+            model.scale.set(30, 30, 30);
+            model.position.set(0, 0, 0);
+            model.rotation.set(0, 0, 0);
             break;
 
           default:
