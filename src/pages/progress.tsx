@@ -108,7 +108,7 @@ const Hints = () => {
         datasets: [
           {
             backgroundColor: ["#ED1643", "#1D1E22"],
-            data: [gotClueNum, 7 - gotClueNum], //グラフのデータ
+            data: [gotClueNum, 8 - gotClueNum], //グラフのデータ
             borderWidth: 0,
           },
         ],
@@ -150,7 +150,7 @@ const Hints = () => {
           <div className="relative mx-auto mb-5 w-10/12 p-3">
             <p className="absolute right-1/2 top-1/2 -translate-y-4 translate-x-1/2 text-3xl tracking-widest">
               {gotClueNum}
-              <span className="text-base">/7</span>
+              <span className="text-base">/8</span>
               <span className="text-xs">個</span>
             </p>
             <canvas id="cluesPieChart"></canvas>

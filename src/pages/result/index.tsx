@@ -32,11 +32,10 @@ const Result = () => {
             <Link
               href={{
                 pathname: "/story",
-                query: { id: router.query.id, story: "" },
+                query: { id: router.query.id, story: "45,60" },
               }}
               className="boxShadow mb-5 flex w-full items-center justify-center rounded bg-theme-red py-2.5 text-lg tracking-widest text-white"
               onClick={() => {
-                alert("まだ");
                 storyStart();
               }}
             >

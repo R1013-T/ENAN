@@ -20,7 +20,7 @@ const ClueDetail = () => {
     setClueName(router.query.title as string);
     setStoryId(router.query.story as string);
 
-    if (clue_id > 7)
+    if (clue_id > 8)
       router.push({ pathname: "/home", query: { id: router.query.id } });
 
     setClueId(clue_id);
