@@ -56,6 +56,12 @@ const modelCredits = [
     sub: "by plaggy",
     sub_link: "https://www.cgtrader.com/plaggy",
   },
+  {
+    title: "Document Clipboard with Pen",
+    title_link: "https://skfb.ly/oIqts",
+    sub: "by Kami Rapacz",
+    sub_link: "http://creativecommons.org/licenses/by/4.0/",
+  },
 ];
 
 const Item: React.FC<ModelCredit> = (modelCredit) => (
