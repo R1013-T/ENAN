@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { VscMenu } from "react-icons/vsc";
 
 interface Props {
   headerType: "top" | "sub";
@@ -8,9 +7,6 @@ interface Props {
 const Header = (props: Props) => {
   return (
     <div className="relative h-full">
-      <div className="fixed right-6 top-6 z-40">
-        <VscMenu size={25} className="text-gray-300" />
-      </div>
       {props.headerType === "top" ? (
         <div className="absolute -bottom-7 right-1/2 flex translate-x-1/2 flex-wrap items-center justify-center">
           <Image
