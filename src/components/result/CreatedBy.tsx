@@ -14,7 +14,7 @@ const creatorItems: Creator[] = [
   {
     name: "高橋 龍之介",
     role: "Lead Developer",
-    image: "ryut",
+    image: "ryu",
   },
   {
     name: "金井 雪華",
