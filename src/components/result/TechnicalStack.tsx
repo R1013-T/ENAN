@@ -92,6 +92,26 @@ const techStacks: TechStack = {
       name: "Notion",
       description: "Document",
     },
+    {
+      name: "Photoshop",
+      description: "Image editing",
+    },
+    {
+      name: "Illustrator",
+      description: "Vector graphics",
+    },
+    {
+      name: "Microsoft Teams",
+      description: "Communication",
+    },
+    {
+      name: "WebStorm",
+      description: "IDE",
+    },
+    {
+      name: "Visual Studio Code",
+      description: "IDE",
+    },
   ],
 };
 
