@@ -7,17 +7,19 @@ interface Props {
 const Back = (props: Props) => {
   return (
     <div className="absolute h-screen w-full">
-      <div className="relative w-full h-full">
+      <div className="relative h-full w-full">
         <img
           src="/images/story_back.jpg"
           alt=""
-          className="h-screen object-cover absolute top-0 left-0 w-full"
+          className="absolute left-0 top-0 h-screen w-full object-cover"
         />
         {props.person_id && props.showTalk ? (
           <img
             src={`/images/characters/${props.person_id}.png`}
             alt=""
-            className={`fadeIn opacity-0 absolute bottom-0 -left-24 w-full ${props.next ? "fadeOut" : ""}`}
+            className={`fadeIn absolute -left-24 bottom-0 w-full opacity-0 ${
+              props.next ? "fadeOut" : ""
+            }`}
           />
         ) : (
           ""

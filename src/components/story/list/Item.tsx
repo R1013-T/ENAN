@@ -66,7 +66,7 @@ const Item = (props: Props) => {
   return (
     <Panel>
       <div
-        className="cursor-pointer flex justify-between overflow-hidden"
+        className="flex cursor-pointer justify-between overflow-hidden"
         id={props.storyIds.id}
         ref={storyItemRef}
         onClick={handleClickStory}
@@ -77,7 +77,7 @@ const Item = (props: Props) => {
               <img
                 src={`/images/characters/${person_id}.png`}
                 alt=""
-                className="h-14 w-14 scale-150 translate-y-3"
+                className="h-14 w-14 translate-y-3 scale-150"
               />
             ) : (
               ""
@@ -88,7 +88,7 @@ const Item = (props: Props) => {
             <p className=" text-base">{props.story.title}</p>
           </div>
         </div>
-        <div className="px-3 grid place-items-center">
+        <div className="grid place-items-center px-3">
           <VscArrowRight size={20} />
         </div>
       </div>

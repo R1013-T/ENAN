@@ -6,8 +6,6 @@ interface Props {
 
 export const Panel: FC<Props> = (props) => {
   return (
-    <div className="boxShadow w-full my-3 rounded-md">
-      {props.children}
-    </div>
-  )
-}
+    <div className="boxShadow my-3 w-full rounded-md">{props.children}</div>
+  );
+};

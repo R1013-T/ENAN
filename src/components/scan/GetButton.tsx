@@ -51,7 +51,7 @@ const GetButton = (props: Props) => {
     });
 
     // userのget_cluesにprops.currentModelが既に存在するか確認
-    const currentModel = ClUES[props.currentModel as ModelKeys ];
+    const currentModel = ClUES[props.currentModel as ModelKeys];
     const getClueIds = user?.get_clues?.split(",") as string[];
 
     if (getClueIds && getClueIds.includes(currentModel.id.toString())) {

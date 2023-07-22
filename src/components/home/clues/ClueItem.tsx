@@ -24,13 +24,17 @@ const ClueItem = (props: Props) => {
 
   return (
     <div
-      className="boxShadow w-5/12 mb-3 rounded-md"
+      className="boxShadow mb-3 w-5/12 rounded-md"
       onClick={handleClueDetail}
     >
-      <div className="w-full relative">
-        <img src={`images/clues/${props.clue.id}.png`} className="p-4" alt="手がかり" />
-        <div className="absolute bottom-0 right-0 left-0 panelGradientBack h-12 rounded-md grid place-items-center">
-          <p className="tracking-widest text-center text-sm">
+      <div className="relative w-full">
+        <img
+          src={`images/clues/${props.clue.id}.png`}
+          className="p-4"
+          alt="手がかり"
+        />
+        <div className="panelGradientBack absolute bottom-0 left-0 right-0 grid h-12 place-items-center rounded-md">
+          <p className="text-center text-sm tracking-widest">
             {props.clue.name}
           </p>
         </div>
