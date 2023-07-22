@@ -1,6 +1,5 @@
 import Title from "@/components/panel/Title";
 import { Frame } from "@/components/panel/downShadowFrame";
-import { useEffect } from "react";
 import PersonItem from "./PersonItem";
 import { Person } from "@/types/tableType";
 
@@ -14,10 +13,7 @@ const People = (props: Props) => {
       <Title title="容疑者" />
       <Frame>
         {props.gotPeople.map((person: Person) => (
-          <PersonItem
-            key={person.id}
-            person={person}
-          />
+          <PersonItem key={person.id} person={person} />
         ))}
       </Frame>
     </div>

@@ -27,23 +27,23 @@ const PersonItem = (props: Props) => {
   return (
     <Panel>
       <div
-        className="w-full h-27 overflow-hidden flex"
+        className="h-27 flex w-full overflow-hidden"
         onClick={handlePersonDetail}
       >
         <img
           src={`/images/characters/${props.person.id}.png`}
-          className="w-24 mt-2"
+          className="mt-2 w-24"
           alt=""
         />
         <div className="grid place-items-center">
-          <p className="text-xl w-full tracking-widest mb-2">
-            <span className="text-xs mb-1 text-theme-black tracking-wide block">
+          <p className="mb-2 w-full text-xl tracking-widest">
+            <span className="mb-1 block text-xs tracking-wide text-theme-black">
               {props.person.post}
             </span>
             {props.person.name}
           </p>
         </div>
-        <div className="grid place-items-center ml-auto mr-3">
+        <div className="ml-auto mr-3 grid place-items-center">
           <VscArrowRight size={30} />
         </div>
       </div>

@@ -1,7 +1,6 @@
 import Title from "@/components/panel/Title";
 import { Frame } from "@/components/panel/downShadowFrame";
 import { Clue } from "@/types/tableType";
-import { useEffect } from "react";
 import ClueItem from "./ClueItem";
 
 interface Props {
@@ -10,7 +9,7 @@ interface Props {
 
 const Clues = (props: Props) => {
   return (
-    <div className="pb-28 -mt-5">
+    <div className="-mt-5 pb-28">
       <Title title="手がかり" />
       <Frame>
         <div className="flex flex-wrap justify-around pt-5">

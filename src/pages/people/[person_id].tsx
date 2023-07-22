@@ -28,7 +28,7 @@ const PersonDetail = () => {
 
   return (
     <Layout title="手がかり" headerType="sub" hideUnderButton={true}>
-      <Title title={personName as string } />
+      <Title title={personName as string} />
 
       {personId ? (
         <img

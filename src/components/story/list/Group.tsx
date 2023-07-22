@@ -53,8 +53,8 @@ const Group = (props: Props) => {
   }, []);
 
   return (
-    <Frame >
-      <p className="mt-4 w-full text-center racking-widest text-theme-black text-xs">
+    <Frame>
+      <p className="racking-widest mt-4 w-full text-center text-xs text-theme-black">
         {props.group}
       </p>
       {groupStories.map((story, index) => (
