@@ -93,12 +93,20 @@ const techStacks: TechStack = {
       description: "Document",
     },
     {
+      name: "ChatGPT",
+      description: "AI chatbot",
+    },
+    {
       name: "Photoshop",
       description: "Image editing",
     },
     {
       name: "Illustrator",
       description: "Vector graphics",
+    },
+    {
+      name: "Adobe fonts",
+      description: "Font",
     },
     {
       name: "Microsoft Teams",
