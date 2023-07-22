@@ -101,6 +101,9 @@ const Index = () => {
         >
           <div className="rounded border border-theme-black/60 bg-bg-black/80 p-7">
             <p className="text-center text-base">タップしてスタート！</p>
+            <p className="mt-3 text-center text-xs text-white/70">
+              サイレントモードがオフの場合は音も出るよ!
+            </p>
           </div>
         </div>
       )}

@@ -6,6 +6,7 @@ import { FaUsers } from "react-icons/fa";
 import { useSounds } from "@/hooks/useSounds";
 import CreatedBy from "@/components/result/CreatedBy";
 import Resources from "@/components/result/Resources";
+import TechnicalStack from "@/components/result/TechnicalStack";
 
 const Result = () => {
   const router = useRouter();
@@ -61,6 +62,7 @@ const Result = () => {
         </div>
         <div>
           <CreatedBy />
+          <TechnicalStack />
           <Resources />
         </div>
       </div>
