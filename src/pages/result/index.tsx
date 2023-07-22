@@ -7,6 +7,7 @@ import { useSounds } from "@/hooks/useSounds";
 import CreatedBy from "@/components/result/CreatedBy";
 import Resources from "@/components/result/Resources";
 import TechnicalStack from "@/components/result/TechnicalStack";
+import Image from "next/image";
 
 const Result = () => {
   const router = useRouter();
@@ -14,6 +15,18 @@ const Result = () => {
 
   return (
     <Layout headerType="sub" title="結果" hideUnderButton={true}>
+      <a
+        href="https://github.com/R1013-T/ENAN"
+        target="_blank"
+        className="fixed right-5 top-5 z-40"
+      >
+        <Image
+          src="/images/tech/github.svg"
+          alt="GitHub"
+          width={25}
+          height={25}
+        />
+      </a>
       <div className="h-screen w-full overflow-y-scroll">
         <div className="relative h-[90%] border border-theme-black/0">
           <Title title="最終結果" />

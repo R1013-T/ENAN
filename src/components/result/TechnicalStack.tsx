@@ -15,6 +15,7 @@ type TechStack = {
   Backend: TechStackItem[];
   Infrastructure: TechStackItem[];
   Libraries: TechStackItem[];
+  "Tools & Services": TechStackItem[];
 };
 
 const techStacks: TechStack = {
@@ -72,6 +73,24 @@ const techStacks: TechStack = {
     {
       name: "chart.js",
       description: "Chart",
+    },
+  ],
+  "Tools & Services": [
+    {
+      name: "GitHub",
+      description: "Version control",
+    },
+    {
+      name: "GitHub Copilot",
+      description: "AI pair programmer",
+    },
+    {
+      name: "Figma",
+      description: "Design",
+    },
+    {
+      name: "Notion",
+      description: "Document",
     },
   ],
 };
