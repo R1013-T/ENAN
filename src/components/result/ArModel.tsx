@@ -92,7 +92,7 @@ const Item: React.FC<ModelCredit> = (modelCredit) => (
 const ArModel = () => {
   return (
     <div>
-      <p className="racking-widest mt-4 w-full text-center text-xs text-theme-black">
+      <p className="mt-4 w-full text-center text-xs text-theme-black">
         3D Models
       </p>
       {modelCredits.map((modelCredit) => (
